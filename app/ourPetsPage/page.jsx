@@ -1,4 +1,4 @@
-import PetCard from "../../components/PetCard";
+import PetCard from "@/components/PetCard";
 import animals from "@/public/pets.json";
 
 function OurPetsPage () {
