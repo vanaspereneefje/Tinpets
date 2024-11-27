@@ -1,8 +1,10 @@
-import animals from "@public/pets.json" assert { type: 'json' };
+import animals from "@/public/pets.json" assert { type: 'json' };
 console.log(animals);
 
 function PetCard () {
-    return animals;
+    return (
+    <h1>This is a pet card page</h1>
+    )
 }
 
 export default PetCard;
