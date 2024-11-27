@@ -1,18 +1,13 @@
-import animals from "@/public/pets.json" assert { type: 'json' };
 import Image from "next/image";
 import {
     Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
   } from "@/components/ui/card"
-console.log(animals);
 
-function PetCard () {
-    const petPicture = animals.animals.dogs[0].picture;
-    const petName = animals.animals.dogs[0].name;
+function PetCard ({ petCard }) {
+    const petPicture = petCard.picture;
+    const petName = petCard.name;
     return (
         <>
         <Card>
