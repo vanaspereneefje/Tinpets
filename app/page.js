@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link";
 import { useState } from "react";
-import PetCard from '@/components/ui/PetCard'
+import PetCard from '@/components/PetCard'
 export default function Home() {
   const [count, setCount] = useState(0)
   return (
