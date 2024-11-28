@@ -1,16 +1,37 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Calendar } from "@/components/ui/calendar";
 import AppointmentModal from '@/components/AppointmentModal';
+
+const TIME_SLOTS = [
+  '9:00-10:00',
+  '10:00-11:00',
+  '11:00-12:00',
+  '14:00-15:00',
+  '15:00-16:00',
+  '16:00-17:00',
+];
 
 export default function AppointmentPage() {
   const [selectedDate, setSelectedDate] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [availableSlots, setAvailableSlots] = useState({});
+
+  const generateAvailableSlots = useCallback((date) => {
+    const dateString = date.toDateString();
+    if (!availableSlots[dateString]) {
+      const slots = TIME_SLOTS.filter(() => Math.random() > 0.5);
+      setAvailableSlots(prev => ({ ...prev, [dateString]: slots }));
+    }
+  }, [availableSlots]);
 
   const handleDateSelect = (date) => {
     setSelectedDate(date);
-    setShowModal(true);
+    generateAvailableSlots(date);
+    setTimeout(() => {
+      setShowModal(true);
+    }, 0);
   };
 
   return (
@@ -31,6 +52,7 @@ export default function AppointmentPage() {
           <AppointmentModal
             date={selectedDate}
             onClose={() => setShowModal(false)}
+            availableSlots={availableSlots[selectedDate.toDateString()] || []}
           />
         )}
       </div>
