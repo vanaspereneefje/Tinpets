@@ -36,25 +36,26 @@ export default function AppointmentPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center  ">
-      <h1 className="text-3xl font-bold mb-4 mt-0">Make an Appointment</h1>
-      <p className="mb-8">Here you can create an appointment to meet your matched pet.</p>
-      <h2 className="text-2xl font-bold mb-4">Select a Date</h2>
-      <div className="mb-8">
-        <Calendar
-          mode="single"
-          selected={selectedDate}
-          onSelect={handleDateSelect}
-          className="rounded-md border"
-        />
-      </div>
-      {showModal && (
-        <AppointmentModal
-          date={selectedDate}
-          onClose={() => setShowModal(false)}
-          availableSlots={availableSlots[selectedDate.toDateString()] || []}
-        />
-      )}
+    <div className="flex flex-col items-center justify-center">
+    <h1 className="text-3xl font-bold mb-4 mt-0">Make an Appointment</h1>
+    <p className="mb-8">Here you can create an appointment to meet your matched pet.</p>
+    <h2 className="text-2xl font-bold mb-4">Select a Date</h2>
+    <div className="mb-8 relative">
+      <Calendar
+        mode="single"
+        selected={selectedDate}
+        onSelect={handleDateSelect}
+        className="rounded-md border"
+        style={{ zIndex: showModal ? 0 : 10 }}  //  ensure it's displayed below modal
+      />
     </div>
+    {showModal && (
+      <AppointmentModal
+        date={selectedDate}
+        onClose={() => setShowModal(false)}
+        availableSlots={availableSlots[selectedDate.toDateString()] || []}
+      />
+    )}
+  </div>
   );
 }

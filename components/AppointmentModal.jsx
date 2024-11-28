@@ -10,12 +10,12 @@ export default function AppointmentModal({ date, onClose, availableSlots }) {
       alert(`We look forward to meet you on ${date.toDateString()} at ${selectedTime} 😻`);
       onClose();
     } else {
-      alert("Please select a time slot before confirming.")
+      alert("Please select a time slot before confirming.");
     }
   };
 
   const handleCancel = () => {
-    alert("Your appointment is canceled . 😿");
+    alert("Your appointment is canceled. 😿");
     onClose();
   };
 
@@ -24,7 +24,8 @@ export default function AppointmentModal({ date, onClose, availableSlots }) {
   };
 
   return (
-    <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center'>
+    
+    <div className='fixed inset-0 bg-black bg-opacity-50 z-20 flex items-center justify-center'>
       <div className='bg-white p-6 rounded-lg max-w-md w-full'>
         <h3 className='text-xl font-bold mb-4'>Select a Time Slot</h3>
         <p className='mb-4'>Date: {date.toDateString()}</p>
