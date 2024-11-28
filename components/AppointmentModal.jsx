@@ -12,7 +12,7 @@ export default function AppointmentModal({ date, onClose, availableSlots }) {
     } else {
       alert("Please select a time slot before confirming.");
     }
-  };
+  }; // Still need to connect to the backend
 
   const handleCancel = () => {
     alert("Your appointment is canceled. 😿");
