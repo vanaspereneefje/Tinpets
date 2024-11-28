@@ -4,6 +4,7 @@ import React, { useState, useCallback } from 'react';
 import { Calendar } from "@/components/ui/calendar";
 import AppointmentModal from '@/components/AppointmentModal';
 
+
 const TIME_SLOTS = [
   '9:00-10:00',
   '10:00-11:00',
@@ -35,9 +36,11 @@ export default function AppointmentPage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row p-4 gap-4">
-      <div className="md:w-1/2">
-        <h2 className="text-2xl font-bold mb-4">Select a Date</h2>
+    <div className="flex flex-col items-center justify-center  ">
+      <h1 className="text-3xl font-bold mb-4 mt-0">Make an Appointment</h1>
+      <p className="mb-8">Here you can create an appointment to meet your matched pet.</p>
+      <h2 className="text-2xl font-bold mb-4">Select a Date</h2>
+      <div className="mb-8">
         <Calendar
           mode="single"
           selected={selectedDate}
@@ -45,17 +48,13 @@ export default function AppointmentPage() {
           className="rounded-md border"
         />
       </div>
-      <div className="md:w-1/2">
-        <h2 className="text-2xl font-bold mb-4">Appointment Details</h2>
-        <p className="mb-4">Here you can check the best time to meet your matched pet.</p>
-        {showModal && (
-          <AppointmentModal
-            date={selectedDate}
-            onClose={() => setShowModal(false)}
-            availableSlots={availableSlots[selectedDate.toDateString()] || []}
-          />
-        )}
-      </div>
+      {showModal && (
+        <AppointmentModal
+          date={selectedDate}
+          onClose={() => setShowModal(false)}
+          availableSlots={availableSlots[selectedDate.toDateString()] || []}
+        />
+      )}
     </div>
   );
 }
