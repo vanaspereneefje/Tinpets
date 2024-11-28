@@ -13,6 +13,7 @@ const TIME_SLOTS = [
   '16:00-17:00',
 ];
 
+//TODO: create an several appointments to user to check from and connected with backend
 const getRandomSlots = () => {
   return TIME_SLOTS.filter(() => Math.random() > 0.5); //  randomly select some slots
 }
