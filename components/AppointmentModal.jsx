@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function AppointmentModal({ date, onClose, availableSlots }) {
   const [selectedTime, setSelectedTime] = useState(null);
-
+  //TODO: //Need to connect to the backend 
   const handleConfirm = () => {
     if (selectedTime) {
       alert(`We look forward to meet you on ${date.toDateString()} at ${selectedTime} 😻`);
@@ -12,7 +12,7 @@ export default function AppointmentModal({ date, onClose, availableSlots }) {
     } else {
       alert("Please select a time slot before confirming.");
     }
-  }; // Still need to connect to the backend
+  }; 
 
   const handleCancel = () => {
     alert("Your appointment is canceled. 😿");
