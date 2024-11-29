@@ -1,0 +1,40 @@
+{
+    "animals": {
+      "dogs": [
+        {"name": "Buddy", "age": 3, "personalityType": "Friendly", "picture": "/pets.jfif"},
+        {"name": "Max", "age": 5, "personalityType": "Loyal", "picture": "/pets.jfif"},
+        {"name": "Bella", "age": 2, "personalityType": "Playful", "picture": "/pets.jfif"},
+        {"name": "Lucy", "age": 4, "personalityType": "Protective", "picture": "/pets.jfif"},
+        {"name": "Charlie", "age": 6, "personalityType": "Curious", "picture": "/pets.jfif"},
+        {"name": "Rocky", "age": 1, "personalityType": "Energetic", "picture": "/pets.jfif"},
+        {"name": "Daisy", "age": 3, "personalityType": "Gentle", "picture": "/pets.jfif"},
+        {"name": "Milo", "age": 2, "personalityType": "Brave", "picture": "/pets.jfif"},
+        {"name": "Luna", "age": 4, "personalityType": "Affectionate", "picture": "/pets.jfif"},
+        {"name": "Cooper", "age": 5, "personalityType": "Sociable", "picture": "/pets.jfif"}
+      ],
+      "cats": [
+        {"name": "Whiskers", "age": 3, "personalityType": "Independent", "picture": "/pets.jfif"},
+        {"name": "Shadow", "age": 7, "personalityType": "Mysterious", "picture": "/pets.jfif"},
+        {"name": "Mittens", "age": 2, "personalityType": "Playful", "picture": "/pets.jfif"},
+        {"name": "Smokey", "age": 5, "personalityType": "Calm", "picture": "/pets.jfif"},
+        {"name": "Luna", "age": 1, "personalityType": "Curious", "picture": "/pets.jfif"},
+        {"name": "Oreo", "age": 4, "personalityType": "Clever", "picture": "/pets.jfif"},
+        {"name": "Simba", "age": 6, "personalityType": "Brave", "picture": "/pets.jfif"},
+        {"name": "Cleo", "age": 2, "personalityType": "Friendly", "picture": "/pets.jfif"},
+        {"name": "Bella", "age": 3, "personalityType": "Affectionate", "picture": "/pets.jfif"},
+        {"name": "Tiger", "age": 5, "personalityType": "Adventurous", "picture": "/pets.jfif"}
+      ],
+      "birds": [
+        {"name": "Tweety", "age": 1, "personalityType": "Cheerful", "picture": "/pets.jfif"},
+        {"name": "Polly", "age": 2, "personalityType": "Talkative", "picture": "/pets.jfif"},
+        {"name": "Sky", "age": 3, "personalityType": "Gentle", "picture": "/pets.jfif"},
+        {"name": "Sunny", "age": 4, "personalityType": "Playful", "picture": "/pets.jfif"},
+        {"name": "Coco", "age": 2, "personalityType": "Curious", "picture": "/pets.jfif"},
+        {"name": "Kiwi", "age": 3, "personalityType": "Sociable", "picture": "/pets.jfif"},
+        {"name": "Ruby", "age": 5, "personalityType": "Elegant", "picture": "/pets.jfif"},
+        {"name": "Pepper", "age": 4, "personalityType": "Energetic", "picture": "/pets.jfif"},
+        {"name": "Blue", "age": 2, "personalityType": "Calm", "picture": "/pets.jfif"},
+        {"name": "Angel", "age": 1, "personalityType": "Affectionate", "picture": "/pets.jfif"}
+      ]
+    }
+  }
