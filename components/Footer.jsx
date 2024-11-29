@@ -1,18 +1,18 @@
 'use client';
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { FaFacebook, FaXTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa6';
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
- const Footer = () => { 
+const Footer = () => {
   return (
-    <footer className="bg-background ">
+    <footer className="bg-background">
       <div className="container mx-auto px-4 md:px-6 py-8 md:py-12 text-center">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 ">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">About Us</h3>
             <p className="text-sm text-muted-foreground">
-            Let us help you on your journey to find a new friend who will bring joy and companionship to your life!
+              Let us help you on your journey to find a new friend who will bring joy and companionship to your life!
             </p>
           </div>
           <div className="space-y-4">
@@ -27,22 +27,30 @@ import { Separator } from "@/components/ui/separator";
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Follow Us</h3>
             <div className="flex space-x-2 justify-center">
-              <Button size="icon" variant="ghost">
-                <Facebook className="h-4 w-4" />
-                <span className="sr-only">Facebook</span>
-              </Button>
-              <Button size="icon" variant="ghost">
-                <Twitter className="h-4 w-4" />
-                <span className="sr-only">Twitter</span>
-              </Button>
-              <Button size="icon" variant="ghost">
-                <Instagram className="h-4 w-4" />
-                <span className="sr-only">Instagram</span>
-              </Button>
-              <Button size="icon" variant="ghost">
-                <Linkedin className="h-4 w-4" />
-                <span className="sr-only">LinkedIn</span>
-              </Button>
+              <a href="https://www.facebook.com/becode.org/" target="_blank" rel="noopener noreferrer">
+                <Button size="icon" variant="ghost">
+                  <FaFacebook className="h-6 w-6 text-blue-600" />
+                  <span className="sr-only">Facebook</span>
+                </Button>
+              </a>
+              <a href="https://x.com/becodeorg" target="_blank" rel="noopener noreferrer">
+                <Button size="icon" variant="ghost">
+                  <FaXTwitter className="h-6 w-6 text-blue-400" />
+                  <span className="sr-only">Twitter</span>
+                </Button>
+              </a>
+              <a href="https://www.instagram.com/becodeorg/" target="_blank" rel="noopener noreferrer">
+                <Button size="icon" variant="ghost">
+                  <FaInstagram className="h-6 w-6 text-pink-500" />
+                  <span className="sr-only">Instagram</span>
+                </Button>
+              </a>
+              <a href="https://www.linkedin.com/company/becode.org/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
+                <Button size="icon" variant="ghost">
+                  <FaLinkedin className="h-6 w-6 text-blue-700" />
+                  <span className="sr-only">LinkedIn</span>
+                </Button>
+              </a>
             </div>
           </div>
         </div>
@@ -64,4 +72,5 @@ import { Separator } from "@/components/ui/separator";
     </footer>
   );
 };
+
 export default Footer;
