@@ -17,11 +17,11 @@ import { Separator } from "@/components/ui/separator";
           </div>
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Find Us</h3>
-            <p className="text-sm text-muted-foreground">123 lederberg Ghent, Belgium 9000</p>
+            <p className="text-sm text-muted-foreground">1234 Pet Lane, Gent, Belgium</p>
           </div>
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Contact Us</h3>
-            <p className="text-sm text-muted-foreground">Email: info@example.com</p>
+            <p className="text-sm text-muted-foreground">Email: <a href="mailto:info@tinpet.com" className="text-blue-500">info@tinpet.com</a></p>
             <p className="text-sm text-muted-foreground">Phone: (123) 456-7890</p>
           </div>
           <div className="space-y-4">
