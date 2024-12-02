@@ -23,22 +23,15 @@ function PetCarousel () {
               {dogCards.map((petCard, index) => (
               <CarouselItem key={index}>
                   <PetCard petCard={petCard} index={index} />
-                  <div className="w-[250px] flex justify-self-center m-[20px]">
+                  <p className="mt-[20px]">energy level:</p>
+                  <div className="w-[250px] flex justify-self-center m-[20px] mt-[10px]">
                     <Slider defaultValue={[animals.animals.dogs[index].energy]} max={100} step={1} disabled></Slider>
                   </div>
-                  <div className="w-[250px] flex justify-self-center m-[10px]">
+                  <div className="w-[250px] flex flex-col justify-self-center m-[10px] gap-[20px]">
                     <p>age: {animals.animals.dogs[index].age}</p>
-                  </div>
-                  <div className="w-[250px] flex justify-self-center m-[10px]">
                     <p>personality type: {animals.animals.dogs[index].personalityType}</p>
-                  </div>
-                  <div className="w-[250px] flex justify-self-center m-[10px]">
                     <p>cat friendly: {animals.animals.dogs[index].catfriendly ? "yes" : "no"}</p>
-                  </div>
-                  <div className="w-[250px] flex justify-self-center m-[10px]">
                     <p>dog friendly: {animals.animals.dogs[index].dogfriendly ? "yes" : "no"}</p>
-                  </div>
-                  <div className="w-[250px] flex justify-self-center m-[10px]">
                     <p>kid friendly: {animals.animals.dogs[index].kidfriendly ? "yes" : "no"}</p>
                   </div>
               </CarouselItem>
