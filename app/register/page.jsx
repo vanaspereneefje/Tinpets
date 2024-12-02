@@ -24,7 +24,6 @@ const RegisterPage = () => {
     try {
       const response = await fetch('http://localhost:3001/api/v1/register', {
         method: 'POST',
-        "Access-Control-Allow-Origin": 'http://localhost:3001',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, username, email, password }),
         credentials: 'include',
