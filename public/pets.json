@@ -1,40 +1,40 @@
 {
     "animals": {
       "dogs": [
-        {"name": "Buddy", "age": 3, "personalityType": "Friendly", "picture": "/pets.jfif", "energy": 10},
-        {"name": "Max", "age": 5, "personalityType": "Loyal", "picture": "/pets.jfif", "energy": 20},
-        {"name": "Bella", "age": 2, "personalityType": "Playful", "picture": "/pets.jfif", "energy": 30},
-        {"name": "Lucy", "age": 4, "personalityType": "Protective", "picture": "/pets.jfif", "energy": 40},
-        {"name": "Charlie", "age": 6, "personalityType": "Curious", "picture": "/pets.jfif", "energy": 50},
-        {"name": "Rocky", "age": 1, "personalityType": "Energetic", "picture": "/pets.jfif", "energy": 60},
-        {"name": "Daisy", "age": 3, "personalityType": "Gentle", "picture": "/pets.jfif", "energy": 70},
-        {"name": "Milo", "age": 2, "personalityType": "Brave", "picture": "/pets.jfif", "energy": 80},
-        {"name": "Luna", "age": 4, "personalityType": "Affectionate", "picture": "/pets.jfif", "energy": 90},
-        {"name": "Cooper", "age": 5, "personalityType": "Sociable", "picture": "/pets.jfif", "energy": 100}
+        {"name": "Buddy", "age": 3, "personalityType": "Friendly", "picture": "/pets.jfif", "energy": 10, "catfriendly": true, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Max", "age": 5, "personalityType": "Loyal", "picture": "/pets.jfif", "energy": 20, "catfriendly": false, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Bella", "age": 2, "personalityType": "Playful", "picture": "/pets.jfif", "energy": 30, "catfriendly": true, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Lucy", "age": 4, "personalityType": "Protective", "picture": "/pets.jfif", "energy": 40, "catfriendly": true, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Charlie", "age": 6, "personalityType": "Curious", "picture": "/pets.jfif", "energy": 50, "catfriendly": true, "dogfriendly": false, "kidfriendly": true},
+        {"name": "Rocky", "age": 1, "personalityType": "Energetic", "picture": "/pets.jfif", "energy": 60, "catfriendly": false, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Daisy", "age": 3, "personalityType": "Gentle", "picture": "/pets.jfif", "energy": 70, "catfriendly": true, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Milo", "age": 2, "personalityType": "Brave", "picture": "/pets.jfif", "energy": 80, "catfriendly": true, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Luna", "age": 4, "personalityType": "Affectionate", "picture": "/pets.jfif", "energy": 90, "catfriendly": false, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Cooper", "age": 5, "personalityType": "Sociable", "picture": "/pets.jfif", "energy": 100, "catfriendly": false, "dogfriendly": false, "kidfriendly": false}
       ],
       "cats": [
-        {"name": "Whiskers", "age": 3, "personalityType": "Independent", "picture": "/pets.jfif", "energy": 10},
-        {"name": "Shadow", "age": 7, "personalityType": "Mysterious", "picture": "/pets.jfif", "energy": 20},
-        {"name": "Mittens", "age": 2, "personalityType": "Playful", "picture": "/pets.jfif", "energy": 30},
-        {"name": "Smokey", "age": 5, "personalityType": "Calm", "picture": "/pets.jfif", "energy": 40},
-        {"name": "Luna", "age": 1, "personalityType": "Curious", "picture": "/pets.jfif", "energy": 50},
-        {"name": "Oreo", "age": 4, "personalityType": "Clever", "picture": "/pets.jfif", "energy": 60},
-        {"name": "Simba", "age": 6, "personalityType": "Brave", "picture": "/pets.jfif", "energy": 70},
-        {"name": "Cleo", "age": 2, "personalityType": "Friendly", "picture": "/pets.jfif", "energy": 80},
-        {"name": "Bella", "age": 3, "personalityType": "Affectionate", "picture": "/pets.jfif", "energy": 90},
-        {"name": "Tiger", "age": 5, "personalityType": "Adventurous", "picture": "/pets.jfif", "energy": 10}
+        {"name": "Whiskers", "age": 3, "personalityType": "Independent", "picture": "/pets.jfif", "energy": 10, "catfriendly": true, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Shadow", "age": 7, "personalityType": "Mysterious", "picture": "/pets.jfif", "energy": 20, "catfriendly": false, "dogfriendly": false, "kidfriendly": true},
+        {"name": "Mittens", "age": 2, "personalityType": "Playful", "picture": "/pets.jfif", "energy": 30, "catfriendly": true, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Smokey", "age": 5, "personalityType": "Calm", "picture": "/pets.jfif", "energy": 40, "catfriendly": true, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Luna", "age": 1, "personalityType": "Curious", "picture": "/pets.jfif", "energy": 50, "catfriendly": true, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Oreo", "age": 4, "personalityType": "Clever", "picture": "/pets.jfif", "energy": 60, "catfriendly": false, "dogfriendly": false, "kidfriendly": false},
+        {"name": "Simba", "age": 6, "personalityType": "Brave", "picture": "/pets.jfif", "energy": 70, "catfriendly": true, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Cleo", "age": 2, "personalityType": "Friendly", "picture": "/pets.jfif", "energy": 80, "catfriendly": true, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Bella", "age": 3, "personalityType": "Affectionate", "picture": "/pets.jfif", "energy": 90, "catfriendly": false, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Tiger", "age": 5, "personalityType": "Adventurous", "picture": "/pets.jfif", "energy": 10, "catfriendly": true, "dogfriendly": false, "kidfriendly": false}
       ],
       "birds": [
-        {"name": "Tweety", "age": 1, "personalityType": "Cheerful", "picture": "/pets.jfif", "energy": 10},
-        {"name": "Polly", "age": 2, "personalityType": "Talkative", "picture": "/pets.jfif", "energy": 20},
-        {"name": "Sky", "age": 3, "personalityType": "Gentle", "picture": "/pets.jfif", "energy": 30},
-        {"name": "Sunny", "age": 4, "personalityType": "Playful", "picture": "/pets.jfif", "energy": 40},
-        {"name": "Coco", "age": 2, "personalityType": "Curious", "picture": "/pets.jfif", "energy": 50},
-        {"name": "Kiwi", "age": 3, "personalityType": "Sociable", "picture": "/pets.jfif", "energy": 60},
-        {"name": "Ruby", "age": 5, "personalityType": "Elegant", "picture": "/pets.jfif", "energy": 70},
-        {"name": "Pepper", "age": 4, "personalityType": "Energetic", "picture": "/pets.jfif", "energy": 80},
-        {"name": "Blue", "age": 2, "personalityType": "Calm", "picture": "/pets.jfif", "energy": 90},
-        {"name": "Angel", "age": 1, "personalityType": "Affectionate", "picture": "/pets.jfif", "energy": 10}
+        {"name": "Tweety", "age": 1, "personalityType": "Cheerful", "picture": "/pets.jfif", "energy": 10, "catfriendly": false, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Polly", "age": 2, "personalityType": "Talkative", "picture": "/pets.jfif", "energy": 20, "catfriendly": false, "dogfriendly": false, "kidfriendly": false},
+        {"name": "Sky", "age": 3, "personalityType": "Gentle", "picture": "/pets.jfif", "energy": 30, "catfriendly": true, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Sunny", "age": 4, "personalityType": "Playful", "picture": "/pets.jfif", "energy": 40, "catfriendly": false, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Coco", "age": 2, "personalityType": "Curious", "picture": "/pets.jfif", "energy": 50, "catfriendly": false, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Kiwi", "age": 3, "personalityType": "Sociable", "picture": "/pets.jfif", "energy": 60, "catfriendly": false, "dogfriendly": false, "kidfriendly": true},
+        {"name": "Ruby", "age": 5, "personalityType": "Elegant", "picture": "/pets.jfif", "energy": 70, "catfriendly": false, "dogfriendly": false, "kidfriendly": true},
+        {"name": "Pepper", "age": 4, "personalityType": "Energetic", "picture": "/pets.jfif", "energy": 80, "catfriendly": true, "dogfriendly": true, "kidfriendly": true},
+        {"name": "Blue", "age": 2, "personalityType": "Calm", "picture": "/pets.jfif", "energy": 90, "catfriendly": true, "dogfriendly": true, "kidfriendly": false},
+        {"name": "Angel", "age": 1, "personalityType": "Affectionate", "picture": "/pets.jfif", "energy": 10, "catfriendly": false, "dogfriendly": false, "kidfriendly": false}
       ]
     }
   }
