@@ -4,45 +4,45 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 const RegisterPage = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const router = useRouter();
 
-
-  const onSubmit = async (data) => {
+  const onSubmit = async (data) => { 
     const { name, username, email, password } = data;
 
     if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match.");
       return;
     }
-    //TODO: check if works properly
+
     try {
-      const response = await fetch('/api/v1/register', {
+      const response = await fetch('http://localhost:3001/api/v1/register', {
         method: 'POST',
+        "Access-Control-Allow-Origin": 'http://localhost:3001',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, username, email, password }),
-        credentials: 'include', //allow cookies from BE
+        credentials: 'include',
       });
 
       const result = await response.json();
 
       if (response.ok) {
         setSuccessMessage(result.message || "Registration successful!");
-        document.cookie = `token=${result.token}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${14 * 24 * 60 * 60}`;
-        setTimeout(() => router.push('/login'), 2000); 
+        
+        setErrorMessage(null)
       } else {
         setErrorMessage(result.message || "Registration failed.");
       }
     } catch (err) {
       setErrorMessage("An error occurred while trying to register.");
-      console.error(err);
+      console.log(err.message);
     }
+    setTimeout(() => redirect('/'), 2000);
   };
 
   return (
