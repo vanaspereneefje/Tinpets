@@ -25,6 +25,13 @@ const Navbar = () => {
           <Link href="/contact-us" className="text-white text-lg hover:underline">
             Contact Us
           </Link>
+          <Link href="/register" className="text-white text-lg hover:underline">
+            Register
+          </Link>
+          <Link href="/login" className="text-white text-lg hover:underline">
+            Log in
+          </Link>
+          
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
