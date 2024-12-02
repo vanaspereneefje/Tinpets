@@ -35,6 +35,7 @@ const RegisterPage = () => {
 
       if (response.ok) {
         setSuccessMessage(result.message || "Registration successful!");
+        setErrorMessage(null)
       } else {
         setErrorMessage(result.message || "Registration failed.");
       }
