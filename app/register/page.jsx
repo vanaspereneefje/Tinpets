@@ -33,7 +33,7 @@ const RegisterPage = () => {
 
       if (response.ok) {
         setSuccessMessage(result.message || "Registration successful!");
-        setTimeout(() => redirect('/'), 2000);
+        
         setErrorMessage(null)
       } else {
         setErrorMessage(result.message || "Registration failed.");
@@ -42,6 +42,7 @@ const RegisterPage = () => {
       setErrorMessage("An error occurred while trying to register.");
       console.log(err.message);
     }
+    setTimeout(() => redirect('/'), 2000);
   };
 
   return (
