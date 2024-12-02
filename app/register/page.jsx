@@ -23,8 +23,9 @@ const RegisterPage = () => {
     }
     //TODO: check if works properly
     try {
-      const response = await fetch('/api/v1/register', {
+      const response = await fetch('http://localhost:3001/api/v1/register', {
         method: 'POST',
+        "Access-Control-Allow-Origin": 'http://localhost:3001',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, username, email, password }),
         credentials: 'include', //allow cookies from BE
@@ -34,8 +35,7 @@ const RegisterPage = () => {
 
       if (response.ok) {
         setSuccessMessage(result.message || "Registration successful!");
-        document.cookie = `token=${result.token}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=${14 * 24 * 60 * 60}`;
-        setTimeout(() => router.push('/login'), 2000); 
+        setErrorMessage(null)
       } else {
         setErrorMessage(result.message || "Registration failed.");
       }
