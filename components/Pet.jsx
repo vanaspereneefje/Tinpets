@@ -1,5 +1,6 @@
 import Image from "next/image";
 import animals from "@/public/pets.json";
+import { Button } from "@/components/ui/button";
 
 function PetPageUI ({ petCard }) {
     const petPicture = petCard.picture;
@@ -23,6 +24,7 @@ function PetPageUI ({ petCard }) {
                     <p><strong>dog friendly:</strong> {animals.animals.dogs[index].dogfriendly ? "yes" : "no"}</p>
                     <p><strong>kid friendly:</strong> {animals.animals.dogs[index].kidfriendly ? "yes" : "no"}</p>
                 </div>
+                <Button variant="outline" className="mb-[20px] mt-[20px] text-2xl"><strong>Adopt me!</strong></Button>
             </div>
         </div>
         </>
