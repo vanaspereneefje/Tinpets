@@ -2,7 +2,7 @@ import Image from "next/image";
 import animals from "@/public/pets.json";
 import { Button } from "@/components/ui/button";
 
-function PetPageUI ({ petCard }) {
+function Pet ({ petCard }) {
     const petPicture = petCard.picture;
     const petName = petCard.name;
     const index = 1;
@@ -31,4 +31,4 @@ function PetPageUI ({ petCard }) {
     )
 }
 
-export default PetPageUI;
+export default Pet;

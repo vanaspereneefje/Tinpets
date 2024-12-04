@@ -1,5 +1,5 @@
 import PetCard from "@/components/PetCard";
-import PetPageUI from "@/components/Pet";
+import Pet from "@/components/Pet";
 import animals from "@/public/pets.json";
 
 function petPage () {
@@ -10,7 +10,7 @@ function petPage () {
     return (
         <>
         <div key={CardIndex}>
-            <PetPageUI petCard={selectedCard} index={CardIndex} />
+            <Pet petCard={selectedCard} index={CardIndex} />
         </div>
         </>
     )
