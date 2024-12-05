@@ -87,7 +87,13 @@ function Questionnaire() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
 
- 
+  const handleOptionChange = (option) => {
+    const updatedAnswers = [...answers];
+    updatedAnswers[currentQuestionIndex] = option; // Update the answer for the current question
+    setAnswers(updatedAnswers);
+  };
+
+  
 }
 
 export default Questionnaire;
