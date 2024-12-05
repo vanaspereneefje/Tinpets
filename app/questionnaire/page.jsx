@@ -117,6 +117,55 @@ function Questionnaire() {
     alert("Your answers have been submitted!");
   };
   
+  return (
+    <div className="flex flex-col items-center justify-center h-screen p-4">
+      <div className="mb-6 text-center">
+        <h1 className="text-2xl font-bold">We&apos;re excited to find your perfect pet!</h1>
+        <p className="mt-2 text-lg">
+          To help us match you with your ideal pet friend, please answer a few fun questions. 
+          Your answers will guide us in finding the best companion tailored just for you!
+        </p>
+      </div>
+
+      {questions.length > 0 ? (
+        <div className="border border-gray-300 rounded-lg p-6 mb-4 w-3/4">
+          <h2 className="text-xl mb-4">
+            {currentQuestionIndex + 1}. {questions[currentQuestionIndex].question}
+          </h2>
+          <RadioGroup
+            value={answers[currentQuestionIndex]}
+            onValueChange={handleOptionChange}
+          >
+            {questions[currentQuestionIndex].options.map((option, index) => (
+              <div key={index} className="flex items-center mb-2">
+                <RadioGroupItem value={option} id={`option-${index}`} />
+                <Label htmlFor={`option-${index}`} className="ml-2">
+                  {option}
+                </Label>
+              </div>
+            ))}
+          </RadioGroup>
+        </div>
+      ) : (
+        <p>Loading questions...</p>
+      )}
+
+      <div className="flex justify-between w-full px-6">
+        <Button onClick={handlePrev} disabled={currentQuestionIndex === 0} className="text-xl">
+          &larr; Previous
+        </Button>
+        {currentQuestionIndex === questions.length - 1 ? (
+          <Button onClick={handleSubmit} className="text-xl" variant="primary">
+            Submit
+          </Button>
+        ) : (
+          <Button onClick={handleNext} className="text-xl" variant="primary">
+            Next &rarr;
+          </Button>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default Questionnaire;
