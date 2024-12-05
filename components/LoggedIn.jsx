@@ -8,23 +8,23 @@ function getCookie(name) {
 }
 
 function LoggedIn () {
-    const [tokenExist, setTokenExist] = useState(false);
+    const [sessionExist, setSessionExist] = useState(false);
 
     useEffect(() => {
-        const token = getCookie('token');
-        if (token) {
-            console.log('Token exists:', token);
-            setTokenExist(true);
+        const session = getCookie('connect.sid');
+        if (session) {
+            console.log('Session exists:', session);
+            setSessionExist(true);
         } else {
-            console.log('Token does not exist');
-            setTokenExist(false);
+            console.log('Session does not exist');
+            setSessionExist(false);
         }
     }, []
     );
         
     return (
         <div> 
-        {tokenExist ? <p>logged in</p> : <p>not logged in</p>}
+        {sessionExist ? <p>logged in</p> : <p>not logged in</p>}
         </div>
     )
 
