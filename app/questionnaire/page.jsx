@@ -151,11 +151,11 @@ function Questionnaire() {
       )}
 
       <div className="flex justify-between w-full px-6">
-        <Button onClick={handlePrev} disabled={currentQuestionIndex === 0} className="text-xl">
+        <Button onClick={handlePrev} disabled={currentQuestionIndex === 0} className="text-xl"  variant="primary">
           &larr; Previous
         </Button>
         {currentQuestionIndex === questions.length - 1 ? (
-          <Button onClick={handleSubmit} className="text-xl" variant="primary">
+          <Button onClick={handleSubmit} className="text-xl" >
             Submit
           </Button>
         ) : (
