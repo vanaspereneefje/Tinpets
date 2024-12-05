@@ -105,6 +105,17 @@ function Questionnaire() {
     }
   };
 
+  const handleSubmit = () => {
+    const allAnswered = !answers.includes(null); // Check if all questions are answered
+    if (!allAnswered) {
+      alert("Please answer all questions before submitting!");
+      return;
+    }
+    
+    localStorage.setItem('questionnaireAnswers', JSON.stringify(answers)); // Save answers to local storage
+    // console.log("Saved answers:", answers); 
+    alert("Your answers have been submitted!");
+  };
   
 }
 
