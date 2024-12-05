@@ -61,6 +61,16 @@ const Navbar = () => {
             className="block text-white text-lg hover:underline">
             Contact Us
           </Link>
+          <Link
+            href="/register"
+            className="block text-white text-lg hover:underline">
+            Register
+          </Link>
+          <Link
+            href="/login"
+            className="block text-white text-lg hover:underline">
+            Log In
+          </Link>
         </div>
       )}
     </nav>
