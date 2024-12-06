@@ -1,82 +1,77 @@
+"use client";
+
+import React, {useState, useEffect } from 'react';
 import PetCard from "@/components/PetCard";
-import { headers } from "next/headers";
+import {
+    Select,
+    SelectTrigger,
+    SelectValue,
+    SelectContent,
+    SelectItem,
+  } from "@/components/ui/select";
 
-export default async function OurPetsPage() {
+  export default function OurPetsPage(){
+        const [selectedSpecies, setSelectedSpecies]=useState("All");
+        const [petsData, setPetData] = useState([]);// State to store the fetched pets data
+        const [loading, setLoading]= useState(true);//To mange loading state
 
-    async function getCards() {
-        const headersList = await headers(); 
-        
-        try {
-    
-            const response = await fetch('http://localhost:3001/api/v1/pets/get-all', {
-                method: 'GET',
-                credentials: 'include',
-                headers: {
-                    ...(headersList.get('cookie') ? { Cookie: headersList.get('cookie') } : {}),
-                },
-            });
+        useEffect(()=>{
+            const fetchCards=async()=>{
+                setLoading(true); //start loading
+                try{
+                    const response= await fetch('http://localhost:3001/api/v1/pets/get-all');
+                    if(!response.ok){
+                        throw new Error('Failed to fetch pets data')
+                    }
+                    const data= await response.json();
+                    setPetData(data); //update petsData with fetched data
+                } catch (error){
+                    console.log('Error fetching pets data:',error);
+                } finally {
+                    setLoading(false);// end loading
+                }
+            };
 
-            if (!response.ok) {
-                console.log('Failed to fetch pets data');
-            }
-    
-            const data = await response.json();
-            console.log(data)
-    
-            return data;
-        } catch (error) {
-            console.log('Error fetching pets data:', error);
-            return "Error fetching pets data."
-        }
-    }
+            fetchCards(); 
+        }, [] );
 
-    const petsData = await getCards();
+        //Filter the pets based on selected species
+        const filteredPets = selectedSpecies === "All"
+        ? petsData
+        : petsData.filter( pet => pet.species === selectedSpecies);
 
-    const dogCards = petsData
-        .filter(pet => pet.species === "Dog")
-        .map(pet => (
-            <PetCard key={pet.id} petCard={pet} />
-        ));
+        return (
+            <>
+                {/* Pet species filter using Select component */}
+                <div className="flex justify-center mb-5 mt-10">
+                    <Select onValueChange={setSelectedSpecies} value={selectedSpecies}>
+                        <SelectTrigger className="w-[180px]">
+                            <SelectValue placeholder="Select Pet Type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="All">All Pets</SelectItem>
+                            <SelectItem value="Dog">Dogs</SelectItem>
+                            <SelectItem value="Cat">Cats</SelectItem>
+                            <SelectItem value="Bird">Birds</SelectItem>
+                            <SelectItem value="Fish">Fishes</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
 
-    const catCards = petsData
-        .filter(pet => pet.species === "Cat")
-        .map(pet => (
-            <PetCard key={pet.id} petCard={pet} />
-        ));
+                {/* Loading and Pet Cards display */}
+                {loading ? (
+                    <p className="text-center">Loading pets...</p>
+                ) : (
+                    <>
+                        <h1 className='font-bold text-2xl text-center mb-5 mt-10'>{selectedSpecies} Pets</h1>
+                        <div className="flex flex-wrap justify-center gap-5">
+                            {filteredPets.map(pet => (
+                                <PetCard key={pet.id} petCard={pet} />
+                            ))}
+                        </div>
+                    </>
+                 )}
+            </>
+        );
 
-    const birdCards = petsData
-        .filter(pet => pet.species === "Bird")
-        .map(pet => (
-            <PetCard key={pet.id} petCard={pet} />
-        ));
-
-    const fishCards = petsData
-        .filter(pet => pet.species === "Fish")
-        .map(pet => (
-            <PetCard key={pet.id} petCard={pet} />
-        ));
-
-    return (
-        <>
-            <h1 className='font-bold text-2xl text-center mb-5 mt-10'>Dogs</h1>
-            <div className="flex flex-wrap justify-center gap-5">
-                {dogCards}
-            </div>
-
-            <h1 className='font-bold text-2xl text-center mb-5 mt-10'>Cats</h1>
-            <div className="flex flex-wrap justify-center gap-5">
-                {catCards}
-            </div>
-
-            <h1 className='font-bold text-2xl text-center mb-5 mt-10'>Birds</h1>
-            <div className="flex flex-wrap justify-center gap-5">
-                {birdCards}
-            </div>
-
-            <h1 className='font-bold text-2xl text-center mb-5 mt-10'>Fishes</h1>
-            <div className="flex flex-wrap justify-center gap-5">
-                {fishCards}
-            </div>
-        </>
-    );
-}
+  }
