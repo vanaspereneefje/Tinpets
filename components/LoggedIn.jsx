@@ -9,9 +9,9 @@ function getCookie(name) {
     return token;
 }
 
-function LoggedIn () {
+function LoggedIn ({ children }) {
     const [sessionExist, setSessionExist] = useState(false);
-    const navigation = useNavigate();
+    const navigate = useNavigate();
     const location = useLocation();
 
     useEffect(() => {
@@ -22,13 +22,18 @@ function LoggedIn () {
         } else {
             console.log('Session does not exist');
             setSessionExist(false);
+            navigate('/login');
         }
-    }, []
+    }, [navigate]
     );
-        
+
+    if (!sessionExist) {
+        return null;
+    }
+    
     return (
         <div> 
-        {sessionExist ? <p>logged in</p> : res.redirect('/login')}
+            {children}
         </div>
     )
 
