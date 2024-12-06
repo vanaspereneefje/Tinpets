@@ -33,7 +33,7 @@ function LandingPage() {
         <div className="relative flex flex-col justify-center items-center text-center h-full z-10 text-white">
           <h1 className="text-5xl m-[20px]">Looking for your dream pet?</h1>
           <h2 className="text-3xl m-[20px]">Do not look any further!</h2>
-          <Button onClick={openModal} className="m-[50px] text-2xl p-[25px]">
+          <Button onClick={openModal} className="m-[50px] text-2xl p-[25px] bg-customBrown">
             {bttnText}
           </Button>
           <p className="text-xl">

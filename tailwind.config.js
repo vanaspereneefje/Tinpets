@@ -9,6 +9,10 @@ module.exports = {
   theme: {
   	extend: {
   		colors: {
+			customBrown: '#8f705e',
+			customPink: '#f0a787',
+			customBeige: '#f3dbc5',
+			customLightBeige: '#ffeedd',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
