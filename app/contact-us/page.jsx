@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 const  ContactPage=()=>{
   const router = useRouter();
   return (
@@ -51,7 +52,8 @@ const  ContactPage=()=>{
         <AccordionItem value="item-5">
               <AccordionTrigger>How can I contact you?</AccordionTrigger>
               <AccordionContent>
-                You can reach us via email at <a href="mailto:info@tinpet.com" className="text-blue-500">info@tinpet.com</a>, or call us at <strong>(123) 456-7890</strong>.
+                You can reach us via email at <a href="mailto:info@tinpet.com" className="text-blue-500">info@tinpet.com</a>, or call us at <strong>(123) 456-7890</strong>.<br/>
+                Would you like to make an appointment? Choose a date <Link href="/appointment" className="font-semibold underline">here</Link>
               </AccordionContent>
         </AccordionItem>
 

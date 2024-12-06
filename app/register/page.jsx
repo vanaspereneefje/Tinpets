@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const RegisterPage = () => {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -123,6 +124,7 @@ const RegisterPage = () => {
         <Button type="submit">
           Register
         </Button>
+        <p className="text-xs text-center">Already have an acount? Log in <Link href="/login" className="font-semibold underline">here</Link></p>
       </form>
     </div>
   );
