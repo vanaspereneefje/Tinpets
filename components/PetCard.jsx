@@ -11,7 +11,9 @@ function PetCard ({ petCard }) {
     return (
         <>
         <Card className="hover:scale-110 transition duration-150 ease-in-out">
-            <Image src={petPicture} alt="pet image" width={200} height={200} className="mt-5"/>
+        <div className="relative w-[200px] h-[200px]"> 
+            <Image src={petPicture} alt="pet image" layout="fill" objectFit="cover" className="mt-5 rounded-t-lg "/>
+            </div>
             <CardHeader>
                 <CardTitle>{petName}</CardTitle>
             </CardHeader>
