@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 function getCookie(name) {
     const token = document.cookie.includes('token=') 
@@ -9,6 +11,8 @@ function getCookie(name) {
 
 function LoggedIn () {
     const [sessionExist, setSessionExist] = useState(false);
+    const navigation = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         const session = getCookie('connect.sid');
@@ -24,7 +28,7 @@ function LoggedIn () {
         
     return (
         <div> 
-        {sessionExist ? <p>logged in</p> : <p>not logged in</p>}
+        {sessionExist ? <p>logged in</p> : res.redirect('/login')}
         </div>
     )
 
