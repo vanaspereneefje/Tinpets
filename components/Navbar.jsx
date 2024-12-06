@@ -7,8 +7,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // State for toggling the mobile menu
 
   return (
-    <nav className="bg-gray-800 p-4 m-4 rounded">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="bg-gray-800 w-auto m-4 rounded">
+      <div className="flex justify-between items-center px-4 py-2">
         <div className="text-white text-lg font-bold">TINPET</div>
         <div className="hidden md:flex space-x-4">
           {" "}
