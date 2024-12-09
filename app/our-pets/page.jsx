@@ -48,11 +48,11 @@ export default function OurPetsPage() {
             {/* Pet species filter using Select component */}
             <div className="flex justify-center mb-5 mt-10">
                 <Select onValueChange={setSelectedSpecies} value={selectedSpecies}>
-                    <SelectTrigger className="w-[180px]">
+                    <SelectTrigger className="w-[180px] bg-gray-50">
                         <SelectValue placeholder="Select Pet Type" />
                     </SelectTrigger>
                     <SelectContent>
-                        <SelectItem value="All">All Pets</SelectItem>
+                        <SelectItem value="All" >All Pets</SelectItem>
                         <SelectItem value="Dog">Dogs</SelectItem>
                         <SelectItem value="Cat">Cats</SelectItem>
                         <SelectItem value="Bird">Birds</SelectItem>

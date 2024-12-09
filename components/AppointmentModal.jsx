@@ -55,7 +55,7 @@ export default function AppointmentModal({ date, onClose, availableSlots }) {
           <Button onClick={handleCancel} variant="outline">
             Cancel
           </Button>
-          <Button onClick={handleConfirm}>
+          <Button onClick={handleConfirm} className="bg-customBrown hover:bg-customDarkBrown">
             Confirm
           </Button>
         </div>
