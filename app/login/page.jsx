@@ -44,7 +44,7 @@ const LoginPage = () => {
 
     return (
         <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4 text-center">Welcome back</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-center text-customBrown">Welcome back</h2>
 
       {successMessage && (
         <div className="p-4 mb-4 bg-green-100 text-green-800 rounded">{successMessage}</div>
@@ -83,10 +83,10 @@ const LoginPage = () => {
           />
         </div>
 
-        <Button type="submit" className="text-center">
+        <Button type="submit" className="text-center bg-customBrown hover:bg-customDarkBrown">
           Login
         </Button>
-        <p className="text-xs text-center">Do not have an acount? Sign up <Link href="/register" className="font-semibold underline">here</Link></p>
+        <p className="text-xs text-center">Do not have an acount? Sign up <Link href="/register" className="font-semibold underline text-blue-500">here</Link></p>
       </form>
     </div>
     )

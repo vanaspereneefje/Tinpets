@@ -14,7 +14,7 @@ const AboutPage = () => {
         <button onClick={() => router.back()} className='hover:underline'>Go Back</button>
       </nav>
       
-      <h1 className="text-4xl font-bold mb-6">About TINPET</h1>
+      <h1 className="text-4xl font-bold mb-6 text-customBrown">About TINPET</h1>
       
       
       <div className="mb-6">
