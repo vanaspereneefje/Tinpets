@@ -54,7 +54,7 @@ export default function AppointmentPage() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold mb-4 mt-0 text-customBrown">Make an Appointment</h1>
+      <h1 className="text-3xl font-bold mb-4 mt-0 text-customBrown font-lilita">Make an Appointment</h1>
       <p className="mb-8 italic">Here you can create an appointment to meet your matched pet.</p>
       <h2 className="text-2xl font-bold mb-4 text-customDarkBrown">Select a Date</h2>
       <div className="mb-8 relative bg-gray-50">
