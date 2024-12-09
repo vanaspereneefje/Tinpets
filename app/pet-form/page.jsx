@@ -26,14 +26,32 @@ const formSchema = z.object({
   .number()
   .int({ message: "Age must be an integer." })
   .positive({ message: "Age must be a positive number." }),
-  role: z.string().nonempty({
+  sex: z.string().nonempty({
     message: "Please select a sex.",
+  }),
+  species: z.string().nonempty({
+    message: "Please select an option.",
+  }),
+  breed: z.string().min(2, {
+    message: "Enter the breed of your pet here.",
   }),
   picture: z.any(),
   kids: z.string().nonempty({
     message: "Please select an option.",
   }),
   pets: z.string().nonempty({
+    message: "Please select an option.",
+  }),
+  space: z.string().nonempty({
+    message: "Please select an option.",
+  }),
+  training: z.string().nonempty({
+    message: "Please select an option.",
+  }),
+  garden: z.string().nonempty({
+    message: "Please select an option.",
+  }),
+  environment: z.string().nonempty({
     message: "Please select an option.",
   }),
 })
@@ -45,10 +63,16 @@ export default function ProfileForm() {
         defaultValues: {
           username: "",
           age: "",
-          role: "",
+          species: "",
+          breed: "",
+          sex: "",
           picture: null,
           kids: "",
           pets: "",
+          space: "",
+          training: "",
+          garden: "",
+          environment: "",
         },
       })
     
@@ -61,13 +85,13 @@ export default function ProfileForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 ml-[500px] mr-[500px]">
         <FormField
           control={form.control}
           name="username"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Name</FormLabel>
               <FormControl>
                 <Input placeholder="name" {...field} />
               </FormControl>
@@ -89,6 +113,43 @@ export default function ProfileForm() {
                 </FormDescription>
                 <FormMessage />
             </FormItem>
+            )}
+        />
+        <FormField
+            control={form.control}
+            name="species"
+            render={({ field }) => (
+                <FormItem>
+                <FormLabel>Species</FormLabel>
+                <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}  
+                >
+                    <SelectTrigger>
+                    <SelectValue placeholder="Select the species of your pet" />
+                    </SelectTrigger>
+                    <SelectContent>
+                    <SelectItem value="dog">Dog</SelectItem>
+                    <SelectItem value="cat">Cat</SelectItem>
+                    <SelectItem value="bird">Bird</SelectItem>
+                    <SelectItem value="fish">Fish</SelectItem>
+                    </SelectContent>
+                </Select>
+                <FormMessage />
+                </FormItem>
+            )}
+        />
+        <FormField
+            control={form.control}
+            name="breed"
+            render={({ field }) => (
+                <FormItem>
+                <FormLabel>Breed</FormLabel>
+                <FormControl>
+                    <Input placeholder="Labrador" {...field} />
+                </FormControl>
+                <FormMessage />
+                </FormItem>
             )}
         />
         <FormField
@@ -170,10 +231,156 @@ export default function ProfileForm() {
         />
         <FormField
             control={form.control}
-            name="kids"
+            name="pets"
             render={({ field }) => (
                 <FormItem>
                 <FormLabel>Is your pet friendly towards other pets?</FormLabel>
+                <FormControl>
+                    <div className="flex space-x-4">
+                    <label className="flex items-center space-x-2">
+                        <input
+                        type="radio"
+                        value="yes"
+                        checked={field.value === "yes"}
+                        onChange={() => field.onChange("yes")}
+                        className="radio-input"
+                        />
+                        <span>Yes</span>
+                    </label>
+                    <label className="flex items-center space-x-2">
+                        <input
+                        type="radio"
+                        value="no"
+                        checked={field.value === "no"}
+                        onChange={() => field.onChange("no")}
+                        className="radio-input"
+                        />
+                        <span>No</span>
+                    </label>
+                    </div>
+                </FormControl>
+                <FormMessage />
+                </FormItem>
+            )}
+        />
+        <FormField
+            control={form.control}
+            name="space"
+            render={({ field }) => (
+                <FormItem>
+                <FormLabel>How much space does your pet need?</FormLabel>
+                <FormControl>
+                    <div className="flex space-x-4">
+                    <label className="flex items-center space-x-2">
+                        <input
+                        type="radio"
+                        value="no"
+                        checked={field.value === "no"}
+                        onChange={() => field.onChange("no")}
+                        className="radio-input"
+                        />
+                        <span>Not much</span>
+                    </label>
+                    <label className="flex items-center space-x-2">
+                        <input
+                        type="radio"
+                        value="bit"
+                        checked={field.value === "bit"}
+                        onChange={() => field.onChange("bit")}
+                        className="radio-input"
+                        />
+                        <span>A bit</span>
+                    </label>
+                    <label className="flex items-center space-x-2">
+                        <input
+                        type="radio"
+                        value="lot"
+                        checked={field.value === "lot"}
+                        onChange={() => field.onChange("lot")}
+                        className="radio-input"
+                        />
+                        <span>A lot</span>
+                    </label>
+                    </div>
+                </FormControl>
+                <FormMessage />
+                </FormItem>
+            )}
+        />
+        <FormField
+            control={form.control}
+            name="training"
+            render={({ field }) => (
+                <FormItem>
+                <FormLabel>How much training did your pet have?</FormLabel>
+                <FormControl>
+                    <div className="flex space-x-4">
+                    <label className="flex items-center space-x-2">
+                        <input
+                        type="radio"
+                        value="yes"
+                        checked={field.value === "yes"}
+                        onChange={() => field.onChange("yes")}
+                        className="radio-input"
+                        />
+                        <span>Not much</span>
+                    </label>
+                    <label className="flex items-center space-x-2">
+                        <input
+                        type="radio"
+                        value="no"
+                        checked={field.value === "no"}
+                        onChange={() => field.onChange("no")}
+                        className="radio-input"
+                        />
+                        <span>A lot</span>
+                    </label>
+                    </div>
+                </FormControl>
+                <FormMessage />
+                </FormItem>
+            )}
+        />
+        <FormField
+            control={form.control}
+            name="garden"
+            render={({ field }) => (
+                <FormItem>
+                <FormLabel>Does your pet need a garden?</FormLabel>
+                <FormControl>
+                    <div className="flex space-x-4">
+                    <label className="flex items-center space-x-2">
+                        <input
+                        type="radio"
+                        value="yes"
+                        checked={field.value === "yes"}
+                        onChange={() => field.onChange("yes")}
+                        className="radio-input"
+                        />
+                        <span>Yes</span>
+                    </label>
+                    <label className="flex items-center space-x-2">
+                        <input
+                        type="radio"
+                        value="no"
+                        checked={field.value === "no"}
+                        onChange={() => field.onChange("no")}
+                        className="radio-input"
+                        />
+                        <span>No</span>
+                    </label>
+                    </div>
+                </FormControl>
+                <FormMessage />
+                </FormItem>
+            )}
+        />
+                <FormField
+            control={form.control}
+            name="environment"
+            render={({ field }) => (
+                <FormItem>
+                <FormLabel>Is your pet used to a lively environment?</FormLabel>
                 <FormControl>
                     <div className="flex space-x-4">
                     <label className="flex items-center space-x-2">
