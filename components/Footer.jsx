@@ -11,18 +11,18 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">About Us</h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-600">
               Let us help you on your journey to find a new friend who will bring joy and companionship to your life!
             </p>
           </div>
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Find Us</h3>
-            <p className="text-sm text-muted-foreground">1234 Pet Lane, Gent, Belgium</p>
+            <p className="text-sm text-gray-600">1234 Pet Lane, Gent, Belgium</p>
           </div>
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Contact Us</h3>
-            <p className="text-sm text-muted-foreground">Email: <a href="mailto:info@tinpet.com" className="text-blue-500">info@tinpet.com</a></p>
-            <p className="text-sm text-muted-foreground">Phone: (123) 456-7890</p>
+            <p className="text-sm text-gray-600">Email: <a href="mailto:info@tinpet.com" className="text-blue-500">info@tinpet.com</a></p>
+            <p className="text-sm text-gray-600">Phone: (123) 456-7890</p>
           </div>
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Follow Us</h3>
@@ -56,14 +56,14 @@ const Footer = () => {
         </div>
         <Separator className="my-8" />
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-gray-600">
             © {new Date().getFullYear()} TINPET. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+            <a href="#" className="text-sm text-gray-600 hover:text-primary">
               Privacy Policy
             </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-primary">
+            <a href="#" className="text-sm text-gray-600 hover:text-primary">
               Terms of Service
             </a>
           </div>
