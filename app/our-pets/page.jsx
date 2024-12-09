@@ -66,7 +66,7 @@ export default function OurPetsPage() {
                 <p className="text-center">Loading pets...</p>
             ) : (
                 <>
-                    <h1 className='font-bold text-2xl text-center mb-5 mt-10'>{selectedSpecies} Pets</h1>
+                    <h1 className='font-bold text-2xl text-center mb-5 mt-10'>Category: {selectedSpecies}</h1>
                     <div className="flex flex-wrap justify-center gap-5">
                         {filteredPets.map(pet => (
                             <PetCard key={pet.id} petCard={pet} />
