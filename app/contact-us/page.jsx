@@ -15,7 +15,7 @@ const  ContactPage=()=>{
       <nav className="mb-8">
         <button onClick={() => router.back()} className='hover:underline'>Go Back</button>
       </nav>
-      <h1 className='text-4xl font-bold mb-6'>Contact Us</h1>
+      <h1 className='text-4xl font-bold mb-6 text-customBrown'>Contact Us</h1>
       <Accordion type="single" collapsible className='w-full max-w-xl'>
           <AccordionItem value="item-1">
               <AccordionTrigger>
@@ -59,7 +59,7 @@ const  ContactPage=()=>{
 
       </Accordion>
 
-      <div className="mt-6 text-lg text-center">
+      <div className="mt-6 text-lg text-center italic">
         <p>If you have any further questions, don&apos;t hesitate to contact us!</p>
       </div>
     </div>
