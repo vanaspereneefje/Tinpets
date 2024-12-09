@@ -2,8 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Lilita+One&family=Pacifico&display=swap');
+
 body {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+  font-family: "Lilita One";
+  src: url('../public/fonts/LilitaOne-Regular.ttf');
 }
 
 @layer base {
@@ -66,6 +73,7 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }

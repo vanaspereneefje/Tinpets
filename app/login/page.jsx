@@ -44,7 +44,7 @@ const LoginPage = () => {
 
     return (
         <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4 text-center text-customBrown">Welcome back</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-center text-customBrown font-lilita">Welcome back</h2>
 
       {successMessage && (
         <div className="p-4 mb-4 bg-green-100 text-green-800 rounded">{successMessage}</div>

@@ -31,7 +31,7 @@ function LandingPage() {
           <source src="women_dogs.mp4" type="video/mp4"></source>
         </video>
         <div className="relative flex flex-col justify-center items-center text-center h-full z-10 text-white">
-          <h1 className="text-5xl m-[20px]">Looking for your dream pet?</h1>
+          <h1 className="text-5xl m-[20px] font-lilita ">Looking for your dream pet?</h1>
           <h2 className="text-3xl m-[20px]">Do not look any further!</h2>
           <Button onClick={openModal} className="m-[50px] text-2xl p-[25px] bg-customBrown hover:bg-customDarkBrown">
             {bttnText}
