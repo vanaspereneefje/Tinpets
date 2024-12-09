@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
     darkMode: ["class"],
     content: [
@@ -8,6 +9,9 @@ module.exports = {
   ],
   theme: {
   	extend: {
+			fontFamily: {
+				lilita: ["Lilita One"]
+			},
   		colors: {
 			customBrown: '#8f705e',
 			customDarkBrown: '#694e3e',
@@ -60,6 +64,7 @@ module.exports = {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+			
   		keyframes: {
   			'accordion-down': {
   				from: {
