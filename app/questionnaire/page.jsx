@@ -61,7 +61,7 @@ const questions = [
     id: 7,
     question: "How much time can you dedicate to a pet daily?",
     options: [
-      { value: true, text: "More then an hour" },
+      { value: true, text: "More than an hour" },
       { value: false, text: "Less than an hour" }
     ]
   },
