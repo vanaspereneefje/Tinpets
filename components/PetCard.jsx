@@ -9,20 +9,20 @@ import { useState } from "react";
 import PetModal from "./PetModal";
 
 function PetCard ({ petCard }) {
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedPet, setSelectedPet] = useState(null);
 
     const handleSeeMore = () => {
-        setSelectedPet(petCard); // Set the pet data for the modal
-        setIsModalOpen(true); // Show the modal
+        setSelectedPet(petCard);
+        setIsModalOpen(true);
     };
 
     const closeModal = () => {
         setIsModalOpen(false);
         setSelectedPet(null);
     }
-    // const petPicture = petCard.picture;
-    // const petName = petCard.name;
+
     return (
         <>
             <Card className="hover:scale-110 transition duration-150 ease-in-out">
@@ -33,6 +33,7 @@ function PetCard ({ petCard }) {
                         layout="fill"
                         objectFit="cover"
                         className="mt-5 rounded-t-lg"
+                        loading="lazy"
                     />
                 </div>
                 <CardHeader>
@@ -43,25 +44,13 @@ function PetCard ({ petCard }) {
                 </Button>
             </Card>
 
-            {/* Modal */}
             {isModalOpen && (
                 <PetModal
-                    pet={selectedPet} // Pass selected pet data
-                    onClose={closeModal} // Pass close modal function
+                    pet={selectedPet}
+                    onClose={closeModal}
                 />
             )}
         </>
-        // <>
-        // <Card className="hover:scale-110 transition duration-150 ease-in-out">
-        // <div className="relative w-[200px] h-[200px]"> 
-        //     <Image src={petPicture} alt="pet image" layout="fill" objectFit="cover" className="mt-5 rounded-t-lg "/>
-        //     </div>
-        //     <CardHeader>
-        //         <CardTitle>{petName}</CardTitle>
-        //     </CardHeader>
-        //     <Button className="mb-3">See more</Button>
-        // </Card>
-        // </>
     )
 }
 

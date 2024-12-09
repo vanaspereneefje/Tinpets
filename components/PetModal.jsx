@@ -13,21 +13,23 @@ import {
   
 
 const PetModal = ({ pet, onClose }) => {
+
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-        <Card className="relative w-[400px] p-5 bg-white rounded-lg">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 ">
+        <Card className="relative w-[400px] p-5 bg-white rounded-lg ">
             <CardHeader>
                 <CardTitle className="text-2xl">{pet.name}</CardTitle>
-                <CardDescription>Breed: {pet.breed}</CardDescription>
+                <CardDescription>{pet.breed}</CardDescription>
             </CardHeader>
             <CardContent>
-                <div className="relative w-[150px] h-[150px] mb-3">
+                <div className="relative w-[150px] h-[150px] mx-auto mb-3">
                     <Image
                         src={pet.picture}
                         alt={`${pet.name} picture`}
                         layout="fill"
                         objectFit="cover"
                         className="rounded-full"
+                        loading="lazy"
                     />
                 </div>
                 <p><strong>Description:</strong> {pet.description} </p>
