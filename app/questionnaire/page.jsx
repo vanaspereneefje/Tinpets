@@ -8,19 +8,18 @@ import { Button } from "@/components/ui/button";
 const questions = [
   {
     id: 1,
-    question: "Do you have kids?",
+    question: "Do you have kids at home?",
     options: [
-      { value: false, text: "No kids" },
-      { value: true, text: "Yes, but older" },
-      { value: true, text: "Yes, young kids" }
+      { value: false, text: "No " },
+      { value: true, text: "Yes" }
     ]
   },
   {
     id: 2,
     question: "Do you have other pets?",
     options: [
-      { value: false, text: "No other pets" },
-      { value: true, text: "Yes, I have pets" }
+      { value: false, text: "No" },
+      { value: true, text: "Yes" }
     ]
   },
   {
@@ -32,111 +31,66 @@ const questions = [
       { value: "large", text: "Large" }
     ]
   },
+  
   {
     id: 4,
-    question: "How often do you exercise?",
+    question: "What's your experience with pets?",
     options: [
-      { value: true, text: "Daily" },
-      { value: false, text: "Rarely" },
-      { value: false, text: "Never" }
+      { value: true, text: "A lot" },
+      { value: false, text: "Not much" }
     ]
   },
+
   {
     id: 5,
-    question: "Do you travel often?",
+    question: "Do you have allergies to pets?",
     options: [
       { value: true, text: "Yes" },
-      { value: false, text: "No" },
-      { value: true, text: "Sometimes" }
+      { value: false, text: "No" }
     ]
   },
   {
     id: 6,
-    question: "Do you prefer indoor or outdoor activities?",
+    question: "Do you have a garden?",
     options: [
-      { value: false, text: "Indoor" },
-      { value: true, text: "Outdoor" },
-      { value: false, text: "Both" }
+      { value: true, text: "Yes" },
+      { value: false, text: "No" }
     ]
   },
   {
     id: 7,
-    question: "What's your experience with pets?",
+    question: "How much time can you dedicate to a pet daily?",
     options: [
-      { value: true, text: "A lot" },
-      { value: false, text: "Some" },
-      { value: false, text: "None" }
+      { value: true, text: "More then an hour" },
+      { value: false, text: "Less than an hour" }
     ]
   },
   {
     id: 8,
-    question: "How would you describe your lifestyle?",
+    question: "Do you prefer a quiet or lively environment?",
     options: [
-      { value: true, text: "Active" },
-      { value: false, text: "Sedentary" }
+      { value: true, text: "Quiet" },
+      { value: false, text: "Lively" }
     ]
   },
   {
     id: 9,
-    question: "Do you have allergies to pets?",
+    question: "Are you looking for a specific pet species?",
     options: [
-      { value: true, text: "Yes, cats" },
-      { value: true, text: "Yes, dogs" },
-      { value: false, text: "No allergies" }
+      { value: "dog", text: "Dog" },
+      { value: "cat", text: "Cat" },
+      { value: "bird", text: "Bird" },
+      { value: "fish", text: "Fish" },
+      { value: "any", text: "Any" },
     ]
   },
   {
     id: 10,
-    question: "Do you have a garden?",
-    options: [
-      { value: true, text: "Yes" },
-      { value: false, text: "No" },
-      { value: false, text: "Planning to get one" }
-    ]
-  },
-  {
-    id: 11,
-    question: "How much time can you dedicate to a pet daily?",
-    options: [
-      { value: "a few hours", text: "A few hours" },
-      { value: "half a day", text: "Half a day" },
-      { value: "all day", text: "All day" }
-    ]
-  },
-  {
-    id: 12,
-    question: "Do you prefer a quiet or lively environment?",
-    options: [
-      { value: false, text: "Quiet" },
-      { value: true, text: "Lively" },
-      { value: false, text: "Depends on mood" }
-    ]
-  },
-  {
-    id: 13,
-    question: "Are you looking for a specific pet species?",
-    options: [
-      { value: true, text: "Dog" },
-      { value: false, text: "Cat" },
-      { value: false, text: "Open to any" }
-    ]
-  },
-  {
-    id: 14,
     question: "What size pet would you prefer?",
     options: [
-      { value: false, text: "Small" },
-      { value: true, text: "Medium" },
-      { value: true, text: "Large" }
-    ]
-  },
-  {
-    id: 15,
-    question: "How important is pet grooming to you?",
-    options: [
-      { value: true, text: "Very important" },
-      { value: false, text: "Somewhat important" },
-      { value: false, text: "Not important" }
+      { value: "small", text: "Small" },
+      { value: "medium", text: "Medium" },
+      { value: "large", text: "Large" }
     ]
   }
 ];
