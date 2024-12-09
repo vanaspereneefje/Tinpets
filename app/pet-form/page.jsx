@@ -33,6 +33,9 @@ const formSchema = z.object({
   kids: z.string().nonempty({
     message: "Please select an option.",
   }),
+  pets: z.string().nonempty({
+    message: "Please select an option.",
+  }),
 })
 
 export default function ProfileForm() {
@@ -45,6 +48,7 @@ export default function ProfileForm() {
           role: "",
           picture: null,
           kids: "",
+          pets: "",
         },
       })
     
@@ -164,7 +168,40 @@ export default function ProfileForm() {
                 </FormItem>
             )}
         />
-
+        <FormField
+            control={form.control}
+            name="kids"
+            render={({ field }) => (
+                <FormItem>
+                <FormLabel>Is your pet friendly towards other pets?</FormLabel>
+                <FormControl>
+                    <div className="flex space-x-4">
+                    <label className="flex items-center space-x-2">
+                        <input
+                        type="radio"
+                        value="yes"
+                        checked={field.value === "yes"}
+                        onChange={() => field.onChange("yes")}
+                        className="radio-input"
+                        />
+                        <span>Yes</span>
+                    </label>
+                    <label className="flex items-center space-x-2">
+                        <input
+                        type="radio"
+                        value="no"
+                        checked={field.value === "no"}
+                        onChange={() => field.onChange("no")}
+                        className="radio-input"
+                        />
+                        <span>No</span>
+                    </label>
+                    </div>
+                </FormControl>
+                <FormMessage />
+                </FormItem>
+            )}
+        />
 
         <Button type="submit">Submit</Button>
       </form>
