@@ -178,15 +178,15 @@ function Questionnaire() {
   return (
     <div className="flex flex-col items-center justify-center h-screen p-4">
       <div className="mb-6 text-center">
-        <h1 className="text-2xl font-bold">We&apos;re excited to find your perfect pet!</h1>
-        <p className="mt-2 text-lg">
+        <h1 className="text-4xl font-bold text-customBrown">We&apos;re excited to find your perfect pet!</h1>
+        <p className="mt-2 text-lg text-gray-800 italic">
           To help us match you with your ideal pet friend, please answer a few fun questions. 
           Your answers will guide us in finding the best companion tailored just for you!
         </p>
       </div>
 
       {questions.length > 0 ? (
-        <div className="border border-gray-300 rounded-lg p-6 mb-4 w-3/4">
+        <div className="border border-gray-300 bg-gray-50 rounded-lg p-6 mb-4 w-3/4">
           <h2 className="text-xl mb-4">
             {currentQuestionIndex + 1}. {questions[currentQuestionIndex].question}
           </h2>
@@ -213,11 +213,11 @@ function Questionnaire() {
           &larr; Previous
         </Button>
         {currentQuestionIndex === questions.length - 1 ? (
-          <Button onClick={handleSubmit} className="text-xl" >
+          <Button onClick={handleSubmit} className="text-xl bg-customBrown hover:bg-customDarkBrown" >
             Submit
           </Button>
         ) : (
-          <Button onClick={handleNext} className="text-xl" variant="primary">
+          <Button onClick={handleNext} className="text-xl " variant="primary">
             Next &rarr;
           </Button>
         )}
