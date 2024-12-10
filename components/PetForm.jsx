@@ -126,7 +126,7 @@ export default function PetForm() {
                     defaultValue={field.value}  
                 >
                     <SelectTrigger>
-                    <SelectValue placeholder="Select the species of your pet" />
+                    <SelectValue placeholder="Select an option" />
                     </SelectTrigger>
                     <SelectContent>
                     <SelectItem value="dog">Dog</SelectItem>
@@ -163,7 +163,7 @@ export default function PetForm() {
                     defaultValue={field.value}  
                 >
                     <SelectTrigger>
-                    <SelectValue placeholder="Select the sex of your pet" />
+                    <SelectValue placeholder="Select an option" />
                     </SelectTrigger>
                     <SelectContent>
                     <SelectItem value="female">Female</SelectItem>
@@ -312,7 +312,7 @@ export default function PetForm() {
             name="training"
             render={({ field }) => (
                 <FormItem>
-                <FormLabel>How much training did your pet have?</FormLabel>
+                <FormLabel>How much training did your pet get?</FormLabel>
                 <FormControl>
                     <div className="flex space-x-4">
                     <label className="flex items-center space-x-2">
@@ -380,7 +380,7 @@ export default function PetForm() {
             name="environment"
             render={({ field }) => (
                 <FormItem>
-                <FormLabel>Is your pet used to a lively environment?</FormLabel>
+                <FormLabel>Is your pet used to or fond of a lively environment?</FormLabel>
                 <FormControl>
                     <div className="flex space-x-4">
                     <label className="flex items-center space-x-2">
