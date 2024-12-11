@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"; 
-import { Button } from "@/components/ui/button"; 
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Button } from "@/components/ui/button";
 
 const questions = [
   {
@@ -31,7 +31,7 @@ const questions = [
       { value: "large", text: "Large" }
     ]
   },
-  
+
   {
     id: 4,
     question: "What's your experience with pets?",
@@ -123,10 +123,10 @@ function Questionnaire() {
       alert("Please answer all questions before submitting!");
       return;
     }
-    
+
     localStorage.setItem('questionnaireAnswers', JSON.stringify(answers)); // Save answers to local storage
     // console.log("Saved answers:", answers); 
-    alert("Your answers have been submitted!"); 
+    alert("Your answers have been submitted!");
   };
 
   return (
@@ -134,7 +134,7 @@ function Questionnaire() {
       <div className="mb-6 text-center">
         <h1 className="text-4xl font-bold text-customBrown">We&apos;re excited to find your perfect pet!</h1>
         <p className="mt-2 text-lg text-gray-800 italic">
-          To help us match you with your ideal pet friend, please answer a few fun questions. 
+          To help us match you with your ideal pet friend, please answer a few fun questions.
           Your answers will guide us in finding the best companion tailored just for you!
         </p>
       </div>
@@ -150,9 +150,9 @@ function Questionnaire() {
           >
             {questions[currentQuestionIndex].options.map((option, index) => (
               <div key={index} className="flex items-center mb-2">
-                <RadioGroupItem value={option.text} id={`option-${index}`} /> 
+                <RadioGroupItem value={option.text} id={`option-${index}`} />
                 <Label htmlFor={`option-${index}`} className="ml-2">
-                  {option.text} 
+                  {option.text}
                 </Label>
               </div>
             ))}
@@ -162,7 +162,7 @@ function Questionnaire() {
         <p>Loading questions...</p>
       )}
 
-<div className="flex justify-between w-full px-6">
+      <div className="flex justify-between w-full px-6">
         <Button onClick={handlePrev} disabled={currentQuestionIndex === 0} className="text-xl" variant="primary">
           &larr; Previous
         </Button>
