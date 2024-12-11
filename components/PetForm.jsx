@@ -1,5 +1,3 @@
-"use client"
-
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -22,36 +20,39 @@ const formSchema = z.object({
   name: z.string().min(2, {
     message: "Enter the official name of your pet here.",
   }),
-  age: z
+  age: z.coerce
   .number()
   .int({ message: "Age must be an integer." })
   .positive({ message: "Age must be a positive number." }),
-  sex: z.string().nonempty({
+  sex: z.string().min(1, {
     message: "Please select a sex.",
   }),
-  species: z.string().nonempty({
+  species: z.string().min(1, {
     message: "Please select an option.",
   }),
   breed: z.string().min(2, {
     message: "Enter the breed of your pet here.",
   }),
+  neutered: z.string().min(1, {
+    message: "Please select an option.",
+  }),
   picture: z.any(),
-  kids: z.string().nonempty({
+  kids: z.string().min(1, {
     message: "Please select an option.",
   }),
-  pets: z.string().nonempty({
+  pets: z.string().min(1, {
     message: "Please select an option.",
   }),
-  space: z.string().nonempty({
+  space: z.string().min(1, {
     message: "Please select an option.",
   }),
-  training: z.string().nonempty({
+  training: z.string().min(1,{
     message: "Please select an option.",
   }),
-  garden: z.string().nonempty({
+  garden: z.string().min(1, {
     message: "Please select an option.",
   }),
-  environment: z.string().nonempty({
+  environment: z.string().min(1, {
     message: "Please select an option.",
   }),
 })
@@ -61,11 +62,12 @@ export default function PetForm() {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-          username: "",
+          name: "",
           age: "",
           species: "",
           breed: "",
           sex: "",
+          neutered: "",
           picture: null,
           kids: "",
           pets: "",
@@ -76,19 +78,47 @@ export default function PetForm() {
         },
       })
     
+
       // 2. Define a submit handler.
-      function onSubmit(values) {
+      async function onSubmit(values) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
+            const petData = {
+                id: values.id,
+                name: values.name,
+                age: values.age,
+                gender: values.sex,
+                neutered: values.neutered,
+                species: values.species,
+                breed: values.breed,
+                stats: {
+                    house: values.space,
+                    children: values.kids,
+                    trained: values.training,
+            
+                },
+                picture: values.picture
+          }
+        try {
+            const response = await fetch("", {
+              method: "POST",
+              body: JSON.stringify(petData),
+            });
+        } catch (e) {
+            console.error(e);
+        }
         console.log(values)
       }
+
+
+
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
-          name="username"
+          name="name"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Name</FormLabel>
@@ -170,6 +200,40 @@ export default function PetForm() {
                     <SelectItem value="male">Male</SelectItem>
                     </SelectContent>
                 </Select>
+                <FormMessage />
+                </FormItem>
+            )}
+        />
+        <FormField
+            control={form.control}
+            name="neutered"
+            render={({ field }) => (
+                <FormItem>
+                <FormLabel>Has your pet been neutered?</FormLabel>
+                <FormControl>
+                    <div className="flex space-x-4">
+                    <label className="flex items-center space-x-2">
+                        <input
+                        type="radio"
+                        value="yes"
+                        checked={field.value === "yes"}
+                        onChange={() => field.onChange("yes")}
+                        className="radio-input"
+                        />
+                        <span>Yes</span>
+                    </label>
+                    <label className="flex items-center space-x-2">
+                        <input
+                        type="radio"
+                        value="no"
+                        checked={field.value === "no"}
+                        onChange={() => field.onChange("no")}
+                        className="radio-input"
+                        />
+                        <span>No</span>
+                    </label>
+                    </div>
+                </FormControl>
                 <FormMessage />
                 </FormItem>
             )}
