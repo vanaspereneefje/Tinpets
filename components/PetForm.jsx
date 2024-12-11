@@ -1,5 +1,7 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
+import { v4 as uuidv4 } from 'uuid';
+
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -21,9 +23,9 @@ const formSchema = z.object({
     message: "Enter the official name of your pet here.",
   }),
   age: z.coerce
-  .number()
-  .int({ message: "Age must be an integer." })
-  .positive({ message: "Age must be a positive number." }),
+    .number()
+    .int({ message: "Age must be an integer." })
+    .positive({ message: "Age must be a positive number." }),
   sex: z.string().min(1, {
     message: "Please select a sex.",
   }),
@@ -33,14 +35,14 @@ const formSchema = z.object({
   breed: z.string().min(2, {
     message: "Enter the breed of your pet here.",
   }),
-  neutered: z.string().min(1, {
+  neutered: z.boolean({
     message: "Please select an option.",
   }),
   picture: z.any(),
-  kids: z.string().min(1, {
+  kids: z.boolean({
     message: "Please select an option.",
   }),
-  pets: z.string().min(1, {
+  pets: z.boolean({
     message: "Please select an option.",
   }),
   space: z.string().min(1, {
@@ -58,33 +60,28 @@ const formSchema = z.object({
 })
 
 export default function PetForm() {
-    // 1. Define your form.
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-          name: "",
-          age: "",
-          species: "",
-          breed: "",
-          sex: "",
-          neutered: "",
-          picture: null,
-          kids: "",
-          pets: "",
-          space: "",
-          training: "",
-          garden: "",
-          environment: "",
+            name: "",
+            age: "",
+            species: "",
+            breed: "",
+            sex: "",
+            neutered: "",
+            picture: "",
+            kids: "",
+            pets: "",
+            space: "",
+            training: "",
+            garden: "",
+            environment: "",
         },
       })
     
-
-      // 2. Define a submit handler.
       async function onSubmit(values) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
             const petData = {
-                id: values.id,
+                id: uuidv4(),
                 name: values.name,
                 age: values.age,
                 gender: values.sex,
@@ -95,23 +92,21 @@ export default function PetForm() {
                     house: values.space,
                     children: values.kids,
                     trained: values.training,
-            
                 },
-                picture: values.picture
-          }
+                picture: values.picture,
+                description: values.description
+            }
+
         try {
-            const response = await fetch("", {
+            const response = await fetch('http://localhost:3001/api/v1/pets/add', {
               method: "POST",
-              body: JSON.stringify(petData),
+              body: JSON.stringify({entry: petData}),
             });
         } catch (e) {
             console.error(e);
         }
-        console.log(values)
+        console.log(petData);
       }
-
-
-
 
   return (
     <Form {...form}>
@@ -159,10 +154,10 @@ export default function PetForm() {
                     <SelectValue placeholder="Select an option" />
                     </SelectTrigger>
                     <SelectContent>
-                    <SelectItem value="dog">Dog</SelectItem>
-                    <SelectItem value="cat">Cat</SelectItem>
-                    <SelectItem value="bird">Bird</SelectItem>
-                    <SelectItem value="fish">Fish</SelectItem>
+                    <SelectItem value="Dog">Dog</SelectItem>
+                    <SelectItem value="Cat">Cat</SelectItem>
+                    <SelectItem value="Bird">Bird</SelectItem>
+                    <SelectItem value="Fish">Fish</SelectItem>
                     </SelectContent>
                 </Select>
                 <FormMessage />
@@ -215,9 +210,9 @@ export default function PetForm() {
                     <label className="flex items-center space-x-2">
                         <input
                         type="radio"
-                        value="yes"
-                        checked={field.value === "yes"}
-                        onChange={() => field.onChange("yes")}
+                        value={true}
+                        checked={field.value === true}
+                        onChange={() => field.onChange(true)}
                         className="radio-input"
                         />
                         <span>Yes</span>
@@ -225,9 +220,9 @@ export default function PetForm() {
                     <label className="flex items-center space-x-2">
                         <input
                         type="radio"
-                        value="no"
-                        checked={field.value === "no"}
-                        onChange={() => field.onChange("no")}
+                        value={false}
+                        checked={field.value === false}
+                        onChange={() => field.onChange(false)}
                         className="radio-input"
                         />
                         <span>No</span>
@@ -270,9 +265,9 @@ export default function PetForm() {
                     <label className="flex items-center space-x-2">
                         <input
                         type="radio"
-                        value="yes"
-                        checked={field.value === "yes"}
-                        onChange={() => field.onChange("yes")}
+                        value={true}
+                        checked={field.value === true}
+                        onChange={() => field.onChange(true)}
                         className="radio-input"
                         />
                         <span>Yes</span>
@@ -280,9 +275,9 @@ export default function PetForm() {
                     <label className="flex items-center space-x-2">
                         <input
                         type="radio"
-                        value="no"
-                        checked={field.value === "no"}
-                        onChange={() => field.onChange("no")}
+                        value={false}
+                        checked={field.value === false}
+                        onChange={() => field.onChange(false)}
                         className="radio-input"
                         />
                         <span>No</span>
@@ -304,9 +299,9 @@ export default function PetForm() {
                     <label className="flex items-center space-x-2">
                         <input
                         type="radio"
-                        value="yes"
-                        checked={field.value === "yes"}
-                        onChange={() => field.onChange("yes")}
+                        value={true}
+                        checked={field.value === true}
+                        onChange={() => field.onChange(true)}
                         className="radio-input"
                         />
                         <span>Yes</span>
@@ -314,9 +309,9 @@ export default function PetForm() {
                     <label className="flex items-center space-x-2">
                         <input
                         type="radio"
-                        value="no"
-                        checked={field.value === "no"}
-                        onChange={() => field.onChange("no")}
+                        value={false}
+                        checked={field.value === false}
+                        onChange={() => field.onChange(false)}
                         className="radio-input"
                         />
                         <span>No</span>
@@ -338,32 +333,42 @@ export default function PetForm() {
                     <label className="flex items-center space-x-2">
                         <input
                         type="radio"
-                        value="no"
-                        checked={field.value === "no"}
-                        onChange={() => field.onChange("no")}
+                        value="Apartment"
+                        checked={field.value === "Apartment"}
+                        onChange={() => field.onChange("Apartment")}
                         className="radio-input"
                         />
-                        <span>Not much</span>
+                        <span>Apartment</span>
                     </label>
                     <label className="flex items-center space-x-2">
                         <input
                         type="radio"
-                        value="bit"
-                        checked={field.value === "bit"}
-                        onChange={() => field.onChange("bit")}
+                        value="Small"
+                        checked={field.value === "Small"}
+                        onChange={() => field.onChange("Small")}
                         className="radio-input"
                         />
-                        <span>A bit</span>
+                        <span>Small</span>
                     </label>
                     <label className="flex items-center space-x-2">
                         <input
                         type="radio"
-                        value="lot"
-                        checked={field.value === "lot"}
-                        onChange={() => field.onChange("lot")}
+                        value="Medium"
+                        checked={field.value === "Medium"}
+                        onChange={() => field.onChange("Medium")}
                         className="radio-input"
                         />
-                        <span>A lot</span>
+                        <span>Medium</span>
+                    </label>
+                    <label className="flex items-center space-x-2">
+                        <input
+                        type="radio"
+                        value="Large"
+                        checked={field.value === "Large"}
+                        onChange={() => field.onChange("Large")}
+                        className="radio-input"
+                        />
+                        <span>Large</span>
                     </label>
                     </div>
                 </FormControl>
@@ -474,7 +479,7 @@ export default function PetForm() {
             )}
         />
 
-        <Button type="submit">Submit</Button>
+        <button type="submit">Submit</button>
       </form>
     </Form>
   )
