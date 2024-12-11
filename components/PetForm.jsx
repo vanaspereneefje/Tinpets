@@ -93,13 +93,16 @@ export default function PetForm() {
                     children: values.kids,
                     trained: values.training,
                 },
-                picture: values.picture,
+                // picture: "/public/" + values.picture.name,
                 description: values.description
             }
-
+            // logic to add the image to /public
         try {
             const response = await fetch('http://localhost:3001/api/v1/pets/add', {
               method: "POST",
+              headers: {
+                'Content-Type': 'application/json'
+              },
               body: JSON.stringify({entry: petData}),
             });
         } catch (e) {
@@ -191,8 +194,8 @@ export default function PetForm() {
                     <SelectValue placeholder="Select an option" />
                     </SelectTrigger>
                     <SelectContent>
-                    <SelectItem value="female">Female</SelectItem>
-                    <SelectItem value="male">Male</SelectItem>
+                    <SelectItem value="Female">Female</SelectItem>
+                    <SelectItem value="Male">Male</SelectItem>
                     </SelectContent>
                 </Select>
                 <FormMessage />
