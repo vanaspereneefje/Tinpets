@@ -1,4 +1,4 @@
-
+"use client"
 import PetCarousel from "@/components/PetCarousel";
 
 function MatchesPage () {

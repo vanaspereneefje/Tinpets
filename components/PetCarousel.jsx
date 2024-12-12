@@ -11,32 +11,23 @@ import PetCard from "./PetCard";
 
 
 
-const PetCarousel = async ({ pet }) => {
+const PetCarousel = async () => {
 
+  const matchingPets = JSON.parse(localStorage.getItem("matchingPets")) || [];
 //TODO add array of matched animals instead of this placeholder 
   // const dogCards = animals.animals.dogs;
-  const fetchPet = async () => {
-    try {
-      const response = await fetch (`http://localhost:3001/api/v1/pets/find`, {
-        method: 'GET',
-        credentials: 'include',
-        body: JSON.stringify({  age, breed, gender }), //TODO: check
-      })
-      if(!response.ok) {
-        console.log('Failed to fetch pet data');
-        return;
-      }
-      const data = await response.json();
-      return data;
-      
-    } catch (error) {
-      console.log ('Error fetching the data:', error)
-    }
-  }
-
-  const petData = await fetchPet();
   const speciesToFilter = ["Dog", "Cat", "Bird", "Fish"];
-  const petCards = Array.isArray(petData) ? petData.filter((item) => speciesToFilter.includes(item.species)) : [];
+  const petCards = matchingPets.filter((item) =>
+    speciesToFilter.includes(item.species)
+  );
+
+  if (petCards.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-full">
+        <p className="text-lg text-gray-600">No matching pets found. Try updating your preferences!</p>
+      </div>
+    );
+  }
 
   return (
       <>
@@ -44,7 +35,7 @@ const PetCarousel = async ({ pet }) => {
         <CarouselContent>
             {petCards.map((pet, index) => (
             <CarouselItem key={index}>
-                <PetCard petCard={petCard} index={index} />
+                <PetCard petCard={pet} index={index} />
                 {/* <p className="mt-[20px]">energy level:</p>
                 <div className="w-[250px] flex justify-self-center m-[20px] mt-[10px]">
                   <Slider defaultValue={[animals.animals.dogs[index].energy]} max={100} step={1} disabled></Slider>

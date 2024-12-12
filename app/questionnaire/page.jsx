@@ -66,8 +66,8 @@ const questions = [
     id: 7,
     question: "Are you looking for a pet that is independent or one that requires a lot of attention?",
     options: [
-      { value: true, text: "I have a lot of time to spend with my pet" },
-      { value: false, text: "I need to dedicate less that 1 hour a day" }
+      { value: false, text: "I have a lot of time to spend with my pet" },
+      { value: true, text: "I need to dedicate less that 1 hour a day" }
     ]
   },
   {
@@ -120,64 +120,64 @@ function Questionnaire() {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
   };
-
+  
   const handleSubmit = async () => {
-    // Check if all questions are answered
     if (answers.includes(null)) {
       alert("Please answer all questions before submitting!");
       return;
     }
-
-    const searchParams = {
-      stats: {
-        children: answers[1],
-        house: answers[2],
-        trained: answers[3],
-        energetic: answers[4],
-        garden: answers[5],
-        independent: answers[6],
-        noise: answers[7],
-        neutered: answers[8]
-      },
-      size: answers[9]
+  
+    const searchBody = {
+      searchParams: {
+        stats: {
+          children: answers[1],
+          house: answers[2],
+          trained: answers[3],
+          energetic: answers[4],
+          garden: answers[5],
+          independent: answers[6],
+          noise: answers[7],
+        },
+        size: answers[9]
+      }
     };
 
-    if (answers[0] === "any") {
-      
+    if (answers[0] === "any"){
     } else {
-      searchParams.species = answers[0]
+      searchBody.searchParams.species = answers[0];
     }
-    // localStorage.setItem('questionnaireAnswers', JSON.stringify(answers)); // Save answers to local storage
-    // // console.log("Saved answers:", answers); 
-    // alert("Your answers have been submitted!");
-    try{
+  
+    try {
+      console.log("Search Params Sent:", searchBody);
+  
       const response = await fetch(`http://localhost:3001/api/v1/pets/find`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ searchParams })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ searchBody }),
       });
-
-      if(!response || !response.ok) {
-        console.log('Failed fetching data')
+  
+      console.log("Response Status:", response.status);
+  
+      if (!response || !response.ok) {
+        const errorText = await response.text();
+        console.log("Failed to fetch pet data. Response Text:", errorText);
         return;
       }
-      console.log(searchParams);
+  
       const data = await response.json();
-
-      if (data.foundPets && data.foundPets.length > 0) {
+      console.log("API Response:", data);
+  
+      if (data.foundPets && Array.isArray(data.foundPets) && data.foundPets.length > 0) {
         localStorage.setItem('matchingPets', JSON.stringify(data.foundPets));
         router.push('/matches');
       } else {
         alert("No matching pets found.");
       }
-      
-
     } catch (error) {
-      console.log('Error fetching data: ', error)
+      console.log("Error fetching data:", error);
     }
   };
+  
 
   return (
     <div className="flex flex-col items-center justify-center h-screen p-4">
