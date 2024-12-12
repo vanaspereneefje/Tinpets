@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
+import { useRouter } from 'next/router';
+
 const formData = {
   searchParams : {
       species: '',
@@ -115,6 +117,7 @@ const questions = [
 function Questionnaire() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
+  const router = useRouter();
 
   const handleOptionChange = (value) => {
     const updatedAnswers = [...answers];
@@ -134,14 +137,27 @@ function Questionnaire() {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Check if all questions are answered
     if (answers.includes(null)) {
       alert("Please answer all questions before submitting!");
       return;
     }
 
-    localStorage.setItem('questionnaireAnswers', JSON.stringify(answers)); // Save answers to local storage
+    // call for the api (post)
+    const submitAction = await fetch("api/route", {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify(localStorage.getItem('answers'))
+    })
+
+    const response = await submitAction.json();
+
+    if (!response || !response.ok) return;
+
+
+    router.push('matches');
+
     // console.log("Saved answers:", answers); 
     alert("Your answers have been submitted!");
   };
