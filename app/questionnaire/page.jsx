@@ -1,22 +1,26 @@
 "use client";
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"; 
-import { Button } from "@/components/ui/button"; 
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Button } from "@/components/ui/button";
+import { useRouter } from 'next/navigation';
 
 const questions = [
   {
     id: 1,
-    question: "Do you have kids at home?",
+    question: "Are you looking for a specific species?",
     options: [
-      { value: false, text: "No " },
-      { value: true, text: "Yes" }
+      { value: "Dog", text: "Dog" },
+      { value: "Cat", text: "Cat" },
+      { value: "Bird", text: "Bird" },
+      { value: "Fish", text: "Fish" },
+      { value: "any", text: "No"}
     ]
   },
   {
     id: 2,
-    question: "Do you have other pets?",
+    question: "Do you have children or plan to have them in the future?",
     options: [
       { value: false, text: "No" },
       { value: true, text: "Yes" }
@@ -26,27 +30,28 @@ const questions = [
     id: 3,
     question: "How big is your house?",
     options: [
-      { value: "small", text: "Small" },
-      { value: "medium", text: "Medium" },
-      { value: "large", text: "Large" }
+      { value: "Small", text: "Small" },
+      { value: "Medium", text: "Medium" },
+      { value: "Large", text: "Large" },
+      { value: "Apartment", text: "Apartment"}
     ]
   },
-  
+
   {
     id: 4,
-    question: "What's your experience with pets?",
+    question: "Do you have experience training pets or would you prefer a pet that's already trained?",
     options: [
-      { value: true, text: "A lot" },
-      { value: false, text: "Not much" }
+      { value: true, text: "Experienced" },
+      { value: false, text: "Need training" }
     ]
   },
 
   {
     id: 5,
-    question: "Do you have allergies to pets?",
+    question: "Would you prefer a pet that is calm and relaxed, or one that is more energetic and playful?",
     options: [
-      { value: true, text: "Yes" },
-      { value: false, text: "No" }
+      { value: true, text: "Energetic" },
+      { value: false, text: "Calm" },
     ]
   },
   {
@@ -59,10 +64,10 @@ const questions = [
   },
   {
     id: 7,
-    question: "How much time can you dedicate to a pet daily?",
+    question: "Are you looking for a pet that is independent or one that requires a lot of attention?",
     options: [
-      { value: true, text: "More than an hour" },
-      { value: false, text: "Less than an hour" }
+      { value: true, text: "I have a lot of time to spend with my pet" },
+      { value: false, text: "I need to dedicate less that 1 hour a day" }
     ]
   },
   {
@@ -75,27 +80,26 @@ const questions = [
   },
   {
     id: 9,
-    question: "Are you looking for a specific pet species?",
+    question: "Are you open to adopting a pet that has been neutered, or would you prefer a pet that has not been neutered?",
     options: [
-      { value: "dog", text: "Dog" },
-      { value: "cat", text: "Cat" },
-      { value: "bird", text: "Bird" },
-      { value: "fish", text: "Fish" },
-      { value: "any", text: "Any" },
+      { value: true, text: "Neutered" },
+      { value: false, text: "It does not matter" }
     ]
   },
   {
     id: 10,
-    question: "What size pet would you prefer?",
+    question: "What size of pet would you prefer?",
     options: [
-      { value: "small", text: "Small" },
-      { value: "medium", text: "Medium" },
-      { value: "large", text: "Large" }
+      { value: "Small", text: "Small" },
+      { value: "Medium", text: "Medium" },
+      { value: "Large", text: "Large" }
     ]
   }
 ];
 
 function Questionnaire() {
+  const router = useRouter();
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
 
@@ -117,16 +121,62 @@ function Questionnaire() {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Check if all questions are answered
     if (answers.includes(null)) {
       alert("Please answer all questions before submitting!");
       return;
     }
-    
-    localStorage.setItem('questionnaireAnswers', JSON.stringify(answers)); // Save answers to local storage
-    // console.log("Saved answers:", answers); 
-    alert("Your answers have been submitted!"); 
+
+    const searchParams = {
+      stats: {
+        children: answers[1],
+        house: answers[2],
+        trained: answers[3],
+        energetic: answers[4],
+        garden: answers[5],
+        independent: answers[6],
+        noise: answers[7],
+        neutered: answers[8]
+      },
+      size: answers[9]
+    };
+
+    if (answers[0] === "any") {
+      
+    } else {
+      searchParams.species = answers[0]
+    }
+    // localStorage.setItem('questionnaireAnswers', JSON.stringify(answers)); // Save answers to local storage
+    // // console.log("Saved answers:", answers); 
+    // alert("Your answers have been submitted!");
+    try{
+      const response = await fetch(`http://localhost:3001/api/v1/pets/find`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ searchParams })
+      });
+
+      if(!response || !response.ok) {
+        console.log('Failed fetching data')
+        return;
+      }
+      console.log(searchParams);
+      const data = await response.json();
+
+      if (data.foundPets && data.foundPets.length > 0) {
+        localStorage.setItem('matchingPets', JSON.stringify(data.foundPets));
+        router.push('/matches');
+      } else {
+        alert("No matching pets found.");
+      }
+      
+
+    } catch (error) {
+      console.log('Error fetching data: ', error)
+    }
   };
 
   return (
@@ -134,7 +184,7 @@ function Questionnaire() {
       <div className="mb-6 text-center">
         <h1 className="text-4xl font-bold text-customBrown">We&apos;re excited to find your perfect pet!</h1>
         <p className="mt-2 text-lg text-gray-800 italic">
-          To help us match you with your ideal pet friend, please answer a few fun questions. 
+          To help us match you with your ideal pet friend, please answer a few fun questions.
           Your answers will guide us in finding the best companion tailored just for you!
         </p>
       </div>
@@ -150,9 +200,9 @@ function Questionnaire() {
           >
             {questions[currentQuestionIndex].options.map((option, index) => (
               <div key={index} className="flex items-center mb-2">
-                <RadioGroupItem value={option.text} id={`option-${index}`} /> 
+                <RadioGroupItem value={option.value} id={`option-${index}`} />
                 <Label htmlFor={`option-${index}`} className="ml-2">
-                  {option.text} 
+                  {option.text}
                 </Label>
               </div>
             ))}
@@ -162,7 +212,7 @@ function Questionnaire() {
         <p>Loading questions...</p>
       )}
 
-<div className="flex justify-between w-full px-6">
+      <div className="flex justify-between w-full px-6">
         <Button onClick={handlePrev} disabled={currentQuestionIndex === 0} className="text-xl" variant="primary">
           &larr; Previous
         </Button>
