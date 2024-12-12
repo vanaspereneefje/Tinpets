@@ -15,7 +15,7 @@ const questions = [
       { value: "Cat", text: "Cat" },
       { value: "Bird", text: "Bird" },
       { value: "Fish", text: "Fish" },
-      { value: "any", text: "No"}
+      { value: "any", text: "No" }
     ]
   },
   {
@@ -33,7 +33,7 @@ const questions = [
       { value: "Small", text: "Small" },
       { value: "Medium", text: "Medium" },
       { value: "Large", text: "Large" },
-      { value: "Apartment", text: "Apartment"}
+      { value: "Apartment", text: "Apartment" }
     ]
   },
 
@@ -120,13 +120,13 @@ function Questionnaire() {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
   };
-  
+
   const handleSubmit = async () => {
     if (answers.includes(null)) {
       alert("Please answer all questions before submitting!");
       return;
     }
-  
+
     const searchBody = {
       searchParams: {
         stats: {
@@ -142,31 +142,31 @@ function Questionnaire() {
       }
     };
 
-    if (answers[0] === "any"){
+    if (answers[0] === "any") {
     } else {
       searchBody.searchParams.species = answers[0];
     }
-  
+
     try {
       console.log("Search Params Sent:", searchBody);
-  
+
       const response = await fetch(`http://localhost:3001/api/v1/pets/find`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ searchBody }),
+        body: JSON.stringify({ searchParams: searchBody.searchParams }),
       });
-  
+
       console.log("Response Status:", response.status);
-  
+
       if (!response || !response.ok) {
         const errorText = await response.text();
         console.log("Failed to fetch pet data. Response Text:", errorText);
         return;
       }
-  
+
       const data = await response.json();
       console.log("API Response:", data);
-  
+
       if (data.foundPets && Array.isArray(data.foundPets) && data.foundPets.length > 0) {
         localStorage.setItem('matchingPets', JSON.stringify(data.foundPets));
         router.push('/matches');
@@ -177,7 +177,7 @@ function Questionnaire() {
       console.log("Error fetching data:", error);
     }
   };
-  
+
 
   return (
     <div className="flex flex-col items-center justify-center h-screen p-4">
