@@ -482,7 +482,7 @@ export default function PetForm() {
             )}
         />
 
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </Form>
   )
