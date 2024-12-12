@@ -4,97 +4,114 @@ import { useState } from 'react';
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
+const formData = {
+  searchParams : {
+      species: '',
+      size: '',
+      stats: {
+          house: '',
+          children: false,
+          trained: false,
+      }
+  }
+};
 
 const questions = [
   {
-    id: 1,
-    question: "Do you have kids at home?",
-    options: [
-      { value: false, text: "No " },
-      { value: true, text: "Yes" }
-    ]
+      id: 1,
+      question: "Do you have kids at home?",
+      name: "stats.children",
+      options: [
+          { value: false, text: "No " },
+          { value: true, text: "Yes" }
+      ]
   },
   {
-    id: 2,
-    question: "Do you have other pets?",
-    options: [
-      { value: false, text: "No" },
-      { value: true, text: "Yes" }
-    ]
+      id: 2,
+      question: "Do you have other pets?",
+      options: [
+          { value: false, text: "No" },
+          { value: true, text: "Yes" }
+      ]
   },
   {
-    id: 3,
-    question: "How big is your house?",
-    options: [
-      { value: "small", text: "Small" },
-      { value: "medium", text: "Medium" },
-      { value: "large", text: "Large" }
-    ]
-  },
-
-  {
-    id: 4,
-    question: "What's your experience with pets?",
-    options: [
-      { value: true, text: "A lot" },
-      { value: false, text: "Not much" }
-    ]
-  },
-
-  {
-    id: 5,
-    question: "Do you have allergies to pets?",
-    options: [
-      { value: true, text: "Yes" },
-      { value: false, text: "No" }
-    ]
+      id: 3,
+      name: "stats.house",
+      question: "How big is your house?",
+      options: [
+          { value: "small", text: "Small" },
+          { value: "medium", text: "Medium" },
+          { value: "large", text: "Large" }
+      ]
   },
   {
-    id: 6,
-    question: "Do you have a garden?",
-    options: [
-      { value: true, text: "Yes" },
-      { value: false, text: "No" }
-    ]
+      id: 4,
+      name: "none",
+      question: "What's your experience with pets?",
+      options: [
+          { value: true, text: "A lot" },
+          { value: false, text: "Not much" }
+      ]
   },
   {
-    id: 7,
-    question: "How much time can you dedicate to a pet daily?",
-    options: [
-      { value: true, text: "More than an hour" },
-      { value: false, text: "Less than an hour" }
-    ]
+      id: 5,
+      name: "none",
+      question: "Do you have allergies to pets?",
+      options: [
+          { value: true, text: "Yes" },
+          { value: false, text: "No" }
+      ]
   },
   {
-    id: 8,
-    question: "Do you prefer a quiet or lively environment?",
-    options: [
-      { value: true, text: "Quiet" },
-      { value: false, text: "Lively" }
-    ]
+      id: 6,
+      name: "none",
+      question: "Do you have a garden?",
+      options: [
+          { value: true, text: "Yes" },
+          { value: false, text: "No" }
+      ]
   },
   {
-    id: 9,
-    question: "Are you looking for a specific pet species?",
-    options: [
-      { value: "dog", text: "Dog" },
-      { value: "cat", text: "Cat" },
-      { value: "bird", text: "Bird" },
-      { value: "fish", text: "Fish" },
-      { value: "any", text: "Any" },
-    ]
+      id: 7,
+      question: "How much time can you dedicate to a pet daily?",
+      name: "stats.trained",
+      options: [
+          { value: true, text: "More than an hour" },
+          { value: false, text: "Less than an hour" }
+      ]
   },
   {
-    id: 10,
-    question: "What size pet would you prefer?",
-    options: [
-      { value: "small", text: "Small" },
-      { value: "medium", text: "Medium" },
-      { value: "large", text: "Large" }
-    ]
+      id: 8,
+      name: "none",
+      question: "Do you prefer a quiet or lively environment?",
+      options: [
+          { value: true, text: "Quiet" },
+          { value: false, text: "Lively" }
+      ]
+  },
+  {
+      id: 9,
+      name: "species",
+      question: "Are you looking for a specific pet species?",
+      options: [
+          { value: "dog", text: "Dog" },
+          { value: "cat", text: "Cat" },
+          { value: "bird", text: "Bird" },
+          { value: "fish", text: "Fish" },
+          { value: "any", text: "Any" },
+      ]
+  },
+  {
+      id: 10,
+      name: "size",
+      question: "What size pet would you prefer?",
+      options: [
+          { value: "small", text: "Small" },
+          { value: "medium", text: "Medium" },
+          { value: "large", text: "Large" }
+      ]
   }
 ];
-
 function Questionnaire() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
@@ -145,7 +162,7 @@ function Questionnaire() {
             {currentQuestionIndex + 1}. {questions[currentQuestionIndex].question}
           </h2>
           <RadioGroup
-            value={answers[currentQuestionIndex]}
+            value={questions[currentQuestionIndex].name + "-" +answers[currentQuestionIndex]}
             onValueChange={handleOptionChange}
           >
             {questions[currentQuestionIndex].options.map((option, index) => (
