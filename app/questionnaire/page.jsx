@@ -128,23 +128,19 @@ function Questionnaire() {
     }
 
     const searchBody = {
-      searchParams: {
-        stats: {
-          children: answers[1],
-          house: answers[2],
-          trained: answers[3],
-          energetic: answers[4],
-          garden: answers[5],
-          independent: answers[6],
-          noise: answers[7],
-        },
-        size: answers[9]
-      }
+      children: answers[1],
+      house: answers[2],
+      trained: answers[3],
+      energetic: answers[4],
+      garden: answers[5],
+      independent: answers[6],
+      noise: answers[7],
+      size: answers[9]
     };
 
     if (answers[0] === "any") {
     } else {
-      searchBody.searchParams.species = answers[0];
+      searchBody.species = answers[0];
     }
 
     try {
@@ -153,7 +149,7 @@ function Questionnaire() {
       const response = await fetch(`http://localhost:3001/api/v1/pets/find`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ searchParams: searchBody.searchParams }),
+        body: JSON.stringify({ searchParams: searchBody }),
       });
 
       console.log("Response Status:", response.status);
