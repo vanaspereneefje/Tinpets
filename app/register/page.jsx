@@ -34,6 +34,7 @@ const RegisterPage = () => {
 
       if (response.ok) {
         setSuccessMessage(result.message || "Registration successful!");
+        localStorage.setItem("registration", result);
         setTimeout(() => router.push('/'), 1000);
         
         setErrorMessage(null)

@@ -29,6 +29,7 @@ const LoginPage = () => {
 
       if (response.ok) {
         setSuccessMessage(result.message || "You logged in!");
+        localStorage.setItem("login", result);
         setTimeout(() => router.push('/'), 1000);
         
         setErrorMessage(null)

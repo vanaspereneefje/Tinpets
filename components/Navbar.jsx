@@ -1,10 +1,43 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // State for toggling the mobile menu
+  
+  const [sessionExist, setSessionExist] = useState(() => {
+    if (localStorage.getItem("login")) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    if (localStorage.getItem("login")) {
+      console.log("login or registration exist");
+      setSessionExist(true);
+    } else {
+      console.log("No registration or login exist");
+      setSessionExist(false);
+    }
+  }, []);
+
+  async function logOut() {
+    localStorage.removeItem('login');
+    localStorage.removeItem('registration');
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/logout', {
+        method: "GET",
+        credentials: 'include'
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
 
   return (
     <nav className="bg-customBrown  w-auto m-4 rounded">
@@ -19,18 +52,26 @@ const Navbar = () => {
           <Link href="/our-pets" className="text-white text-lg  hover:underline">
             Our Pets
           </Link>
+          <Link href="/pet-form" className="text-white text-lg  hover:underline">
+            Put up for adoption
+          </Link>
           <Link href="/about" className="text-white text-lg  hover:underline">
             About
           </Link>
           <Link href="/contact-us" className="text-white text-lg hover:underline">
             Contact Us
           </Link>
-          <Link href="/register" className="text-white text-lg hover:underline">
+          {!sessionExist && <Link href="/register" className="text-white text-lg hover:underline">
             Register
-          </Link>
-          <Link href="/login" className="text-white text-lg hover:underline">
+          </Link>}
+          {!sessionExist && <Link href="/login" className="text-white text-lg hover:underline">
             Log in
-          </Link>
+          </Link>}
+          {sessionExist && <button onClick={() => {logOut()}}
+            href="/"
+            className="block text-white text-lg hover:underline">
+            Log Out
+          </button>}
           
         </div>
         <button
@@ -50,7 +91,11 @@ const Navbar = () => {
             className="block text-white text-lg hover:underline">
             Our Pets
           </Link>
-
+          <Link
+            href="/pet-form"
+            className="block text-white text-lg hover:underline">
+            Put up for adoption
+          </Link>
           <Link
             href="/about"
             className="block text-white text-lg hover:underline">
@@ -61,16 +106,21 @@ const Navbar = () => {
             className="block text-white text-lg hover:underline">
             Contact Us
           </Link>
-          <Link
+          {!sessionExist && <Link
             href="/register"
             className="block text-white text-lg hover:underline">
             Register
-          </Link>
-          <Link
+          </Link>}
+          {!sessionExist &&<Link
             href="/login"
             className="block text-white text-lg hover:underline">
             Log In
-          </Link>
+          </Link>}
+          {sessionExist && <button onClick={() => {logOut()}}
+            href="/"
+            className="block text-white text-lg hover:underline">
+            Log Out
+          </button>}
         </div>
       )}
     </nav>
