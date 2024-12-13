@@ -41,9 +41,12 @@ const PetCarousel = async () => {
                   <Slider defaultValue={[animals.animals.dogs[index].energy]} max={100} step={1} disabled></Slider>
                 </div> */}
                 <div className="w-[250px] flex flex-col justify-self-center m-[10px] gap-[20px]">
-                  <p>age: {pet.age}</p>
-                  <p>pet breed: {pet.breed}</p>
-                  <p>sex: {pet.gender}</p>
+                  <p><strong>Name:</strong> {pet.name}</p>
+                  <p><strong>Age:</strong> {pet.age}</p>
+                  <p><strong>Breed:</strong> {pet.breed}</p>
+                  <p><strong>Sex:</strong> {pet.gender}</p>
+                  <p><strong>Size:</strong> {pet.size}</p>
+                  <p><strong>Description:</strong> {pet.description}</p>
                   {/* <p>dog friendly: {animals.animals.dogs[index].dogfriendly ? "yes" : "no"}</p>
                   <p>kid friendly: {animals.animals.dogs[index].kidfriendly ? "yes" : "no"}</p> */}
                 </div>
