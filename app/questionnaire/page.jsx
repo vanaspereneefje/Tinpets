@@ -15,7 +15,7 @@ const questions = [
       { value: "Cat", text: "Cat" },
       { value: "Bird", text: "Bird" },
       { value: "Fish", text: "Fish" },
-      { value: "any", text: "No" }
+      { value: "any", text: "Any" }
     ]
   },
   {
@@ -41,8 +41,8 @@ const questions = [
     id: 4,
     question: "Do you have experience training pets or would you prefer a pet that's already trained?",
     options: [
-      { value: true, text: "Experienced" },
-      { value: false, text: "Need training" }
+      { value: true, text: "I can train a pet" },
+      { value: false, text: "I prefer a trained pet" }
     ]
   },
 
@@ -74,8 +74,8 @@ const questions = [
     id: 8,
     question: "Do you prefer a quiet or lively environment?",
     options: [
-      { value: true, text: "Quiet" },
-      { value: false, text: "Lively" }
+      { value: true, text: "Lively" },
+      { value: false, text: "Quiet" }
     ]
   },
   {
